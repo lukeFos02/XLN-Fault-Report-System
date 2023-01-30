@@ -1,21 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using XLN_Fault_Report_System.Models;
+using XLN_Fault_Report_System.Services;
 
 namespace XLN_Fault_Report_System.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogin _loginUser;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogin loginUser)
 		{
-			_logger = logger;
+			_loginUser= loginUser;
 		}
 
 		public IActionResult Index()
 		{
 			return View();
+		}
+		[HttpPost]
+		public IActionResult Index(string username, string passcode)
+		{
+            bool issuccess = _loginUser.AuthenticateUser(username, passcode);
+
+			if (issuccess == true)
+			{
+				ViewBag.username = string.Format("Successfully logged-in", username);
+				return View();
+
+			}
+			else
+			{
+				ViewBag.username = string.Format("Login Failed ", username);
+				return View();
+			}
 		}
 
 		public IActionResult Privacy()

@@ -1,6 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using XLN_Fault_Report_System.Models;
+using XLN_Fault_Report_System.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("connectionstr");
+builder.Services.AddDbContext<LoginDbcontext>(conn => conn.UseSqlServer(connectionString));
+builder.Services.AddScoped<ILogin, AuthenticateLogin>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
