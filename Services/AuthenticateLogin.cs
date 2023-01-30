@@ -14,16 +14,16 @@ namespace XLN_Fault_Report_System.Services
 		}
 		public bool AuthenticateUser(string username, string passcode)
 		{
-			List<User> users = _context.Users.ToList();
-			foreach(User u in users)
+            var succeeded = _context.Users.FirstOrDefault(authUser => authUser.UserName == username && authUser.passcode == passcode);
+			if (succeeded == null)
 			{
-				if (username == u.UserName && passcode == u.passcode)
-				{
-					return true;	
-				}
+				return false;
 			}
-			return false;
-		}
+			else
+			{
+				return true;
+			}
+        }
 		public async Task<IEnumerable<User>> getuser()
 		{
 			return await _context.Users.ToListAsync();
