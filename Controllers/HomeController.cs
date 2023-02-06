@@ -25,13 +25,12 @@ namespace XLN_Fault_Report_System.Controllers
 
 			if (issuccess == true)
 			{
-				ViewBag.username = string.Format("Successfully logged-in", username);
-				return View();
-
+				ViewBag.username = string.Format(username);
+				return RedirectToAction("Index", "LandingPage");
 			}
 			else
 			{
-				ViewBag.username = string.Format("Login Failed ", username);
+				ViewBag.username = string.Format("Login Failed");
 				return View();
 			}
 		}
