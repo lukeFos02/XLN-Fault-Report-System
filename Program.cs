@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("connectionstr");
 builder.Services.AddDbContext<LoginDbcontext>(conn => conn.UseSqlServer(connectionString));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddScoped<ILogin, AuthenticateLogin>();
+builder.Services.AddScoped<IServices, Services>();
 
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(30);//You can set Time   

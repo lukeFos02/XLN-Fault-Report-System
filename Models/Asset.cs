@@ -7,7 +7,7 @@ namespace XLN_Fault_Report_System.Models
     {
         [Key]
         public int AssetId { get; set; } 
-        public int Number { get; set; } 
+        public string Number { get; set; } 
         public string Name { get; set; }
 
         [ForeignKey(nameof(User.UserId))]

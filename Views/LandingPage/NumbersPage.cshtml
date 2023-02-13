@@ -1,0 +1,16 @@
+﻿@inject IHttpContextAccessor contextAccessor
+@{
+    ViewData["Title"] = "Your Numbers";
+    User user = TempData["User"] as User;
+    List<Asset> assets = TempData["UsersAssets"] as List<Asset>;
+    int amount = assets.Count();
+
+}
+<div>
+    @foreach (Asset a in assets)
+    {
+        <p>
+            @a.Number
+        </p>
+    }
+</div>

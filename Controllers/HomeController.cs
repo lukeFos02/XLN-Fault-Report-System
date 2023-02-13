@@ -8,9 +8,9 @@ namespace XLN_Fault_Report_System.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogin _loginUser;
+		private readonly IServices _loginUser;
         private readonly IHttpContextAccessor _contextAccessor;
-        public HomeController(ILogin loginUser, IHttpContextAccessor contextAccessor)
+        public HomeController(IServices loginUser, IHttpContextAccessor contextAccessor)
         {
             _loginUser = loginUser;
             _contextAccessor = contextAccessor;	
@@ -28,6 +28,7 @@ namespace XLN_Fault_Report_System.Controllers
 			if (issuccess == true)
 			{
 				_contextAccessor.HttpContext.Session.SetString("Username", username);
+				_contextAccessor.HttpContext.Session.SetString("Password", passcode);
 				return RedirectToAction("Index", "LandingPage");
 			}
 			else
