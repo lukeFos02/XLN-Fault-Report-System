@@ -10,7 +10,7 @@ namespace XLN_Fault_Report_System.Models
         public int Number { get; set; } 
         public string Name { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey(nameof(User.UserId))]
         public int UserId { get; set; }
     }
 }

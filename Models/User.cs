@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace XLN_Fault_Report_System.Models
 {
 	public class User
@@ -14,6 +16,6 @@ namespace XLN_Fault_Report_System.Models
 		[Display(Name = "Please Enter Password")]
 		public string Password { get; set; }
 		public int isActive { get; set; }
-		public List<Asset> Assets { get; set; }
+		//public virtual ICollection<Asset> Assets { get; set;}
 	}
 }

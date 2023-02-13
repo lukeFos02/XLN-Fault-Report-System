@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XLN_Fault_Report_System.Models;
 
@@ -10,9 +11,11 @@ using XLN_Fault_Report_System.Models;
 namespace XLNFaultReportSystem.Migrations
 {
     [DbContext(typeof(LoginDbcontext))]
-    partial class LoginDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20230213124327_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
