@@ -17,8 +17,11 @@ namespace XLN_Fault_Report_System.Models
 		{
 			base.OnModelCreating(builder);
 			builder.Entity<User>(entity => {
-				entity.HasKey(k => k.id);
+				entity.HasKey(k => k.UserId);
 			});
-		}
+            builder.Entity<Asset>(entity => {
+                entity.HasKey(k => k.AssetId);
+            });
+        }
 	}
 }
