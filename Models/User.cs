@@ -12,8 +12,8 @@ namespace XLN_Fault_Report_System.Models
 
 		[Required(ErrorMessage = "Please Enter Password")]
 		[Display(Name = "Please Enter Password")]
-		public string passcode { get; set; }
+		public string Password { get; set; }
 		public int isActive { get; set; }
-		public List<Asset> Assets { get; set; }	
+		public List<Asset> Assets { get; set; }
 	}
 }

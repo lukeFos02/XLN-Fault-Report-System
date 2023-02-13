@@ -4,6 +4,7 @@ namespace XLN_Fault_Report_System.Models
 	public class LoginDbcontext : DbContext
 	{
 		public DbSet<User> Users { get; set; }
+		public DbSet<Asset> Assets { get; set; }
 		public LoginDbcontext(DbContextOptions<LoginDbcontext> options) : base(options)
 		{
 

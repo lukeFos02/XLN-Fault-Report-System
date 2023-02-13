@@ -14,7 +14,7 @@ namespace XLN_Fault_Report_System.Services
 		}
 		public bool AuthenticateUser(string username, string passcode)
 		{
-            var succeeded = _context.Users.FirstOrDefault(authUser => authUser.UserName == username && authUser.passcode == passcode);
+            var succeeded = _context.Users.FirstOrDefault(authUser => authUser.UserName == username && authUser.Password == passcode);
 			if (succeeded == null)
 			{
 				return false;
