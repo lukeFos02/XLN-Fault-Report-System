@@ -2,19 +2,21 @@
 using System.Diagnostics;
 using XLN_Fault_Report_System.Models;
 using XLN_Fault_Report_System.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace XLN_Fault_Report_System.Controllers
 {
 	public class HomeController : Controller
 	{
 		private readonly ILogin _loginUser;
+        private readonly IHttpContextAccessor _contextAccessor;
+        public HomeController(ILogin loginUser, IHttpContextAccessor contextAccessor)
+        {
+            _loginUser = loginUser;
+            _contextAccessor = contextAccessor;	
+        }
 
-		public HomeController(ILogin loginUser)
-		{
-			_loginUser= loginUser;
-		}
-
-		public IActionResult Index()
+        public IActionResult Index()
 		{
 			return View();
 		}
@@ -25,7 +27,7 @@ namespace XLN_Fault_Report_System.Controllers
 
 			if (issuccess == true)
 			{
-				ViewBag.username = string.Format(username);
+				_contextAccessor.HttpContext.Session.SetString("Username", username);
 				return RedirectToAction("Index", "LandingPage");
 			}
 			else

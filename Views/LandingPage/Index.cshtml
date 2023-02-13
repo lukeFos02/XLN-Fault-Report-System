@@ -1,4 +1,4 @@
-﻿
+﻿@inject IHttpContextAccessor contextAccessor;
 @{
     ViewData["Title"] = "XLN Landing Page";
 }
@@ -6,7 +6,7 @@
 <body>
     <div class="bluebox">
         <p>
-            @ViewBag.username
+            @contextAccessor.HttpContext.Session.GetString("Username").ToString()
         </p>
         <p>
             ACCOUNT OVERVIEW
