@@ -5,11 +5,11 @@ using XLN_Fault_Report_System.Models;
 
 namespace xlnWork.Controllers;
 
-public class ErrorForm : Controller
+public class ErrorFormController : Controller
 {
 
 
-    public ErrorForm()
+    public ErrorFormController()
     {
 
     }
