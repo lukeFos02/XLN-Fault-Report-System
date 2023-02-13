@@ -10,7 +10,9 @@
     @foreach (Asset a in assets)
     {
         <p>
-            @a.Number
+            <div>
+                @a.Number <a asp-controller="ErrorForm" asp-action="Index">Report Fault</a>
+            </div>
         </p>
     }
 </div>

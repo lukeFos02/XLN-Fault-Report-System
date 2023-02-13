@@ -1,0 +1,34 @@
+﻿@*
+
+*@
+@{
+    ViewData["Title"] = "Warning Page";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-5">Please Read the Following Information Carefully</h1>
+    </div>
+
+    <form id="warningForm" method="post" asp-controller="Home" asp-action="Index">
+        <div>
+            <strong>
+                <label id="selectType">Please Check your Equipments, Extension Cables, and Filters.</label><br />
+                Time related Charges may Apply if the Fault is found on your own Equipment.<br />
+                <a href="https://help.business.bt.com/app/answers/detail/a_id/45454/~/i-have-a-fault-on-my-phone-line.-how-do-i-test-my-equipment-or-wiring">
+                    Click here for Further Guidance on Checking your Equipment
+                </a><br />
+            </strong>
+
+            <label for="seen">I Understand That I may be charged if the fault is mine</label>
+            <input type="checkbox" id="seen" name="seenWarning" required /><br />
+        </div>
+        <input type="submit" name="submit" value="submit" />
+    </form>
+</body>
+</html>

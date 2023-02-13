@@ -1,0 +1,66 @@
+﻿@*
+
+*@
+@{
+    ViewData["Title"] = "Diagnostics Test";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <button onclick="moveProgressBar()">Run Diagnostics</button><br />
+
+    <div id="myBar" style="height:24px;width:0%; background-color:green;"></div><br />
+    <div>
+        <label id="errorLabel"></label>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function moveProgressBar() {
+        var progress = document.getElementById("myBar");
+        var width = 20;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                progress.style.width = width + '%';
+            }
+        }
+
+        var errorLabel = document.getElementById("errorLabel");
+        //errorLabel.innerHTML = "num";
+        var randomNumber = Math.floor((Math.random() * 6) + 1);
+
+
+        switch (randomNumber) {           
+            case 1:
+        errorLabel.innerHTML = "Line fault underground";
+        break;
+            case 2:
+        errorLabel.innerHTML = "Line fault overground";
+        break;
+            case 3:
+        errorLabel.innerHTML = "Exchange fault";
+        break;
+            case 4:
+        errorLabel.innerHTML = "Fault found on 3rd party equipment";
+        break;
+            case 5:
+        errorLabel.innerHTML = "Inconclusive";
+        break;
+            case 6:
+        errorLabel.innerHTML = "No fault found";
+        break;
+            default:
+        break;
+    }
+    }
+</script>
