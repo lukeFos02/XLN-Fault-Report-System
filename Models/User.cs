@@ -4,7 +4,7 @@ namespace XLN_Fault_Report_System.Models
 	public class User
 	{
 		[Key]
-		public int id { get; set; }
+		public int UserId { get; set; }
 
 		[Required(ErrorMessage = "Please Enter Username")]
 		[Display(Name = "Please Enter Username")]
@@ -14,5 +14,6 @@ namespace XLN_Fault_Report_System.Models
 		[Display(Name = "Please Enter Password")]
 		public string passcode { get; set; }
 		public int isActive { get; set; }
+		public List<Asset> Assets { get; set; }	
 	}
 }
