@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 namespace XLN_Fault_Report_System.Models
 {
-	public class LoginDbcontext : DbContext
+	public class Dbcontext : DbContext
 	{
 		public DbSet<User> Users { get; set; }
 		public DbSet<Asset> Assets { get; set; }
-		public LoginDbcontext(DbContextOptions<LoginDbcontext> options) : base(options)
+		public Dbcontext(DbContextOptions<Dbcontext> options) : base(options)
 		{
 
 		}
-        public LoginDbcontext()
+        public Dbcontext()
         {
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

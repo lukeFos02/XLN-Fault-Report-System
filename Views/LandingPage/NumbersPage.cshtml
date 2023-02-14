@@ -1,18 +1,20 @@
 ﻿@inject IHttpContextAccessor contextAccessor
+@model XLN_Fault_Report_System.Models.Asset
 @{
     ViewData["Title"] = "Your Numbers";
     User user = TempData["User"] as User;
     List<Asset> assets = TempData["UsersAssets"] as List<Asset>;
-    int amount = assets.Count();
-
 }
 <div>
     @foreach (Asset a in assets)
     {
         <p>
-            <div>
-                @a.Number <a asp-controller="ErrorForm" asp-action="WarningPage">Report Fault</a>
-            </div>
+            <form asp-controller="LandingPage" asp-action="NumbersPage" method="post">
+                <div>
+                    @a.Number <input type="hidden" class="reportButton" asp-for="AssetId" value="@a.AssetId"/>
+                    <button type="submit">Report Fault</button>
+                </div>
+            </form>
         </p>
     }
 </div>

@@ -7,8 +7,8 @@ namespace XLN_Fault_Report_System.Services
 {
 	public class Services : IServices
 	{
-		private readonly LoginDbcontext _context;
-		public Services(LoginDbcontext context)
+		private readonly Dbcontext _context;
+		public Services(Dbcontext context)
 		{
 			_context = context;
 		}
@@ -37,11 +37,17 @@ namespace XLN_Fault_Report_System.Services
             List<Asset> assets = results.ToList();
 			return assets;
         }
+		public Asset GetAsset(int id)
+		{
+			var asset = _context.Assets.FirstOrDefault(a => a.AssetId == id);
+			return asset as Asset;
+		}
 	}
 	public interface IServices
 	{
 		User GetUser(string username, string passcode);
 		bool AuthenticateUser(string username, string passcode);
 		List<Asset> GetUsersAssets(string username, string passcode);
+		Asset GetAsset(int id);	
 	}
 }

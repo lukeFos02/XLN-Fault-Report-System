@@ -27,5 +27,12 @@ namespace XLN_Fault_Report_System.Controllers
             TempData["UsersAssets"] = Assets;
             return View();
         }
+        [HttpPost]
+        public IActionResult NumbersPage(Asset asset)
+        {
+            Asset chosenAsset = _services.GetAsset(asset.AssetId);
+            _contextAccessor.HttpContext.Session.SetInt32("ChosenAssetId", chosenAsset.AssetId);
+            return RedirectToAction("WarningPage", "ErrorForm");
+        }
     }
 }

@@ -9,7 +9,7 @@ using XLN_Fault_Report_System.Models;
 
 namespace XLNFaultReportSystem.Migrations
 {
-    [DbContext(typeof(LoginDbcontext))]
+    [DbContext(typeof(Dbcontext))]
     partial class LoginDbcontextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

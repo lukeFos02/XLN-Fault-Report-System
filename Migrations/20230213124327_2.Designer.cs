@@ -10,7 +10,7 @@ using XLN_Fault_Report_System.Models;
 
 namespace XLNFaultReportSystem.Migrations
 {
-    [DbContext(typeof(LoginDbcontext))]
+    [DbContext(typeof(Dbcontext))]
     [Migration("20230213124327_2")]
     partial class _2
     {

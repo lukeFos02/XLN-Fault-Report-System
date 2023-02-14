@@ -18,8 +18,12 @@ public class ErrorFormController : Controller
     {
         return View();
     }
-
     public IActionResult Index()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Index(Fault fault)
     {
 
         return View();

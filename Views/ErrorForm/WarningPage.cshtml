@@ -1,8 +1,9 @@
-﻿@*
-
-*@
+﻿@inject IHttpContextAccessor contextaccessor
+@inject XLN_Fault_Report_System.Services.IServices service
 @{
     ViewData["Title"] = "Warning Page";
+    int id = (int)contextaccessor.HttpContext.Session.GetInt32("ChosenAssetId");
+    Asset asset = service.GetAsset(id);
 }
 
 
@@ -28,7 +29,7 @@
             <label for="seen">I Understand That I may be charged if the fault is mine</label>
             <input type="checkbox" id="seen" name="seenWarning" required /><br />
         </div>
-        <input type="submit" name="submit" value="submit" />
+        <input type="submit" name="submit" value="submit"/>
     </form>
 </body>
 </html>
