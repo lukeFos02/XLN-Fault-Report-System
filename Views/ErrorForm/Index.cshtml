@@ -13,14 +13,6 @@
     </div>
 
     <form id="errorInformationForm" method="post" asp-controller="ErrorForm" asp-action="Diagnostics">
-        <div>
-            <strong><label id="selectType">Select which service is affected</label><br /></strong>
-            <label for="cli">Client Incident Type</label>
-            <input type="checkbox" id="cli" name="errorType" /><br />
-            <label for="bb">Broadband</label>
-            <input type="checkbox" id="bb" name="errorType" /><br />
-        </div>
-        <button type="submit" onclick="showErrorList()" name="Next">Next</button>
 
 
         <div id="errorInfo" style="display:none">

@@ -8,11 +8,11 @@ namespace XLN_Fault_Report_System.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IServices _loginUser;
+		private readonly IServices _service;
         private readonly IHttpContextAccessor _contextAccessor;
         public HomeController(IServices loginUser, IHttpContextAccessor contextAccessor)
         {
-            _loginUser = loginUser;
+            _service = loginUser;
             _contextAccessor = contextAccessor;	
         }
 
@@ -23,7 +23,7 @@ namespace XLN_Fault_Report_System.Controllers
 		[HttpPost]
 		public IActionResult Index(string username, string passcode)
 		{
-            bool issuccess = _loginUser.AuthenticateUser(username, passcode);
+            bool issuccess = _service.AuthenticateUser(username, passcode);
 
 			if (issuccess == true)
 			{

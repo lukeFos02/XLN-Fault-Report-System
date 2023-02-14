@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Report A Fault";
+}
+
+@using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post))
+{
+    <div>
+        <strong><label id="ClItitle">CLI Incident Type</label><br /></strong>
+        <label>Bell not ringing @Html.CheckBox("bellnotring")</label>
+        <label>Continuois dial tone @Html.CheckBox("contdialtone")</label>
+        <label>Crossed lines @Html.CheckBox("crossedlines")</label>
+        <label>Cuts off @Html.CheckBox("cutsoff")</label>
+        <label>No dial tone @Html.CheckBox("nodialtone")</label>
+        <label>Noisy line @Html.CheckBox("noisy")</label>
+        <label>Damage @Html.CheckBox("damage")</label>
+    </div>
+    <div>
+        <strong><label id="BbTitle">BB Incident Type</label><br /></strong>
+        <label>Intermittent conection @Html.CheckBox("intermittent")</label>
+        <label>Early life failure @Html.CheckBox("earlylife")</label>
+        <label>Broadband Fault @Html.CheckBox("broadbandfault")</label>
+        <label>Landline fault @Html.CheckBox("landlinefault")</label>
+        <label>Firmware upgraded @Html.CheckBox("firmware")</label>
+        <label>No web pages loading @Html.CheckBox("webpages")</label>
+    </div>
+    <div>
+        <label>Do you have any others errors?</label>
+        <label name="otherErrors">Yes @Html.RadioButton("yes", false)</label>
+        <label name="otherErrors">No @Html.RadioButton("no", false)</label>
+    </div>
+    <button type="submit" onclick="showDescription()" name="Next">Next</button>
+}
+
+<!--checkboxes-->
+
+<!--textbox-->
+<label for="errorDescription">Can you describe your error:</label><br />
+<input type="text" id="errorDescription" name="errorDescription" maxlength="250" /><br />

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Report A Fault";
+}
+@using (Html.BeginForm("ErrorForm1", "ErrorForm", FormMethod.Post))
+{
+    <div>
+        <label>Client Incident Type @Html.CheckBox("cli")</label>
+        <label>Broadband @Html.CheckBox("bb")</label>
+    </div>
+    <button type="submit" onclick="showErrorList()" name="Next">Next</button>
+}
