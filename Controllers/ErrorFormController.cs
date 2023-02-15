@@ -49,7 +49,7 @@ namespace XLN_Fault_Report_System.Controllers
         [HttpPost]
         public IActionResult ErrorForm2(bool bellnotring, bool contdialtone, bool crossedlines, 
             bool cutsoff, bool nodialtone, bool noisy, bool damage, bool intermittent, bool earlylife, 
-            bool broadbandfault, bool landlinefault, bool firmware, bool webpages, bool yes, bool no, string errordescription)
+            bool broadbandfault, bool landlinefault, bool firmware, bool webpages, string otherErrors, string errordescription)
         {
             var IncidentType = "";
             if (bellnotring != false) { IncidentType += ",Bell not ringing"; }
@@ -66,7 +66,7 @@ namespace XLN_Fault_Report_System.Controllers
             if (landlinefault != false) { IncidentType += ",Landline fault"; }
             if (firmware != false) { IncidentType += ",Firmware upgraded"; }
             if (webpages != false) { IncidentType += ",No web pages loading"; }
-            if (yes != false) { IncidentType += ",Yes"; } else { IncidentType += ",No"; }
+            if (otherErrors == "yes") { IncidentType += ",Yes"; } else { IncidentType += ",No"; }
             if (errordescription != null) { _contextAccessor.HttpContext.Session.SetString("ErrorDescription", errordescription); }
             _contextAccessor.HttpContext.Session.SetString("IncidentType", IncidentType);
 
