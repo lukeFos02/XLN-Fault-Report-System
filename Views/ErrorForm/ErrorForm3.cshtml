@@ -2,3 +2,16 @@
 @{
     ViewData["Title"] = "Report A Fault";
 }
+@using (Html.BeginForm("ErrorForm3", "ErrorForm", FormMethod.Post))
+{
+    <div>
+        <strong><label>Is the error intermittent?</label></strong>
+        <label>Yes @Html.RadioButton("yes", false)</label>
+        <labe>No @Html.RadioButton("no", false)</labe>
+    </div>
+    <div>
+        <label>Can you state the pattern of the errors?</label>
+        @Html.TextArea("intermittentdescription", new { maxlength = 250})
+    </div>
+    <button type="submit" onclick="showDescription()" name="Next">Next</button>
+}

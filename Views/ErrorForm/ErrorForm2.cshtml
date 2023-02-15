@@ -25,8 +25,8 @@
     </div>
     <div>
         <label>Do you have any others errors?</label>
-        <label name="otherErrors">Yes @Html.RadioButton("yes", false)</label>
-        <label name="otherErrors">No @Html.RadioButton("no", false)</label>
+        <label name="otherErrors">Yes @Html.RadioButton("yes", false, new { id = "yesErrorRadio" })</label>
+        <label name="otherErrors">No @Html.RadioButton("no", false, new { id = "noErrorRadio" })</label>
     </div>
     <div>
         <label for="errorDescription">Can you give us some details about your error</label>
@@ -41,4 +41,11 @@
         var charLength = $(this).val().length;
         var charLimit = $(this).attr("data-limit-input");
         $(this).next("span").html(charLength + " of " + charLimit);
+    }
+    document.getElementById("yesErrorRadio").onclick = function(){
+        document.getElementById("noErrorRadio").checked = false;
+    }
+    document.getElementById("noErrorRadio").onclick = function(){
+        document.getElementById("yesErrorRadio").checked = false;
+    }
 </script>

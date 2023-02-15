@@ -67,15 +67,23 @@ namespace XLN_Fault_Report_System.Controllers
             if (firmware != false) { IncidentType += ",Firmware upgraded"; }
             if (webpages != false) { IncidentType += ",No web pages loading"; }
             if (yes != false) { IncidentType += ",Yes"; } else { IncidentType += ",No"; }
-
+            if (errordescription != null) { _contextAccessor.HttpContext.Session.SetString("ErrorDescription", errordescription); }
             _contextAccessor.HttpContext.Session.SetString("IncidentType", IncidentType);
-            _contextAccessor.HttpContext.Session.SetString("ErrorDescription", errordescription);
 
             return RedirectToAction("ErrorForm3", "ErrorForm");
         }
         public IActionResult ErrorForm3()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult ErrorForm3(bool yes, bool no, string intermittentdescription)
+        {
+            var IntermittentStatus = "";
+            if (yes != false) { IntermittentStatus += "Yes"; } else { IntermittentStatus += "No"; }
+            if (intermittentdescription != null) { _contextAccessor.HttpContext.Session.SetString("IntermittentDescription", intermittentdescription); }
+            _contextAccessor.HttpContext.Session.SetString("IntermittentStatus", IntermittentStatus);
+            return RedirectToAction("Diagnostics", "ErrorForm");
         }
 
         //[HttpPost]
