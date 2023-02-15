@@ -5,16 +5,27 @@
     User user = TempData["User"] as User;
     List<Asset> assets = TempData["UsersAssets"] as List<Asset>;
 }
-<div>
-    @foreach (Asset a in assets)
-    {
-        <p>
-            <form asp-controller="LandingPage" asp-action="NumbersPage" method="post">
-                <div>
-                    @a.Number <input type="hidden" class="reportButton" asp-for="AssetId" value="@a.AssetId"/>
-                    <button type="submit">Report Fault</button>
-                </div>
-            </form>
-        </p>
-    }
-</div>
+<html>
+<head>
+    <link rel="stylesheet" href="~css/site.css" />
+    <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel =”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+</head>
+<body>
+    <h1 class="lineHeading">Select The Affected Line</h1>
+    <div class="container">
+        @foreach (Asset a in assets)
+        {
+            <p>
+                <form asp-controller="LandingPage" asp-action="NumbersPage" method="post">
+                    <div class="box">
+                        <div class="phoneNumber">
+                            @a.Number <input type="hidden" asp-for="AssetId" value="@a.AssetId" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Report Fault</button>
+                    </div>
+                </form>
+            </p>
+        }
+    </div>
+</body>
+</html>

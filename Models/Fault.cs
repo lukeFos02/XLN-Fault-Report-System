@@ -7,7 +7,7 @@ namespace XLN_Fault_Report_System.Models
     public class Fault
     {
         [Key]
-        public int Id { get; set; }
+        public int FaultId { get; set; }
         [ForeignKey(nameof(Asset.AssetId))]
         public int AssetId { get; set; }
         [Required]

@@ -23,12 +23,22 @@
     </strong>
     <label for="seen">I Understand That I may be charged if the fault is mine</label>
     <input onclick="DisplayLink()" type="checkbox" id="seen" name="seenWarning" required /><br />
-    <a id="WarningPageLink" style="display:none;" asp-controller="ErrorForm" asp-action="ErrorForm1">test</a>        
+    <button style="display:none;" id="WarningPageLink" onclick="location.href='@Url.Action("ErrorForm1", "ErrorForm")';return false;">Next</button>
 </body>
 </html>
 
 <script type="text/javascript">
-    function DisplayLink(){
-    document.getElementById("WarningPageLink").style.display = 'block';
-    }      
+    function DisplayLink() {
+        var displayCheckBox = document.getElementById("seen");
+        displayCheckBox.addEventListener("change", () => {
+            if (displayCheckBox.checked) {
+                document.getElementById("WarningPageLink").style.display='block';
+            } else {
+                document.getElementById("WarningPageLink").style.display = 'none';
+            }
+        });
+        var warningPageButton = document.getElementById("WarningPageLink");
+        if(document.getElementById("seen").checked)
+        warningPageButton.style.display = 'block';
+    }
 </script>

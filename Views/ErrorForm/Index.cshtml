@@ -14,71 +14,6 @@
 
     <form id="errorInformationForm" method="post" asp-controller="ErrorForm" asp-action="Diagnostics">
 
-
-        <div id="errorInfo" style="display:none">
-            <div id="allErrors">
-                <div id="CLITypes">
-                    <strong><label id="ClItitle">CLI Incident Type</label><br /></strong>
-                    <label for="bell">Bell not ringing</label>
-                    <input type="checkbox" id="bell" name="CliIncidentType" /><br />
-
-                    <label for="dialTone">Continuous dial tone</label>
-                    <input type="checkbox" id="dialTone" name="CliIncidentType" /><br />
-
-                    <label for="crossedLine">Crossed lines</label>
-                    <input type="checkbox" id="crossedLine" name="CliIncidentType" /><br />
-
-                    <label for="cutsOff">Cuts off</label>
-                    <input type="checkbox" id="cutsOff" name="CliIncidentType" /><br />
-
-                    <label for="noDialTone">No dial tone</label>
-                    <input type="checkbox" id="noDialTone" name="CliIncidentType" /><br />
-
-                    <label for="noiseyLine">Noisey Line</label>
-                    <input type="checkbox" id="noiseyLine" name="CliIncidentType" /><br />
-
-                    <label for="damage">Damage</label>
-                    <input type="checkbox" id="damage" name="CliIncidentType" /><br />
-                </div>
-
-                <div id="BbTypes">
-                    <strong><label id="BbTitle">BB Incident Type</label><br /></strong>
-                    <label for="intermittentConnection">Intermittent Connection</label>
-                    <input type="checkbox" id="intermittentConnection" name="BbIncidentType" /><br />
-
-                    <label for="earlyLifeFail">Early life failure</label>
-                    <input type="checkbox" id="earlyLifeFail" name="BbIncidentType" /><br />
-
-                    <label for="bbFault">Broadband Fault</label>
-                    <input type="checkbox" id="bbFault" name="BbIncidentType" /><br />
-
-                    <label for="landlineFault">Landline fault</label>
-                    <input type="checkbox" id="landlineFault" name="BbIncidentType" /><br />
-
-                    <label for="firmwareUpgrade">Firmware upgraded</label>
-                    <input type="checkbox" id="firmwareUpgrade" name="BbIncidentType" /><br />
-
-                    <label for="noWP">No web pages loading</label>
-                    <input type="checkbox" id="noWP" name="BbIncidentType" /><br />
-                </div>
-
-                <div>
-                    <label>Do you have any others errors</label>
-                    <label for="otherErrorsExist">Yes</label>
-                    <input type="radio" id="otherErrorsExist" name="otherErrors" /><br />
-                    <label for="noOtherErros">No</label>
-                    <input type="radio" id="noOtherErros" name="otherErrors" /><br />
-
-                </div>
-            </div>
-            <button type="submit" onclick="showDescription()" name="Next">Next</button>
-
-
-
-            <div id="errorTextBox" style="display:none">
-                <label for="errorDescription">Can you describe your error:</label><br />
-                <input type="text" id="errorDescription" name="errorDescription" maxlength="250" /><br />
-
                 <label>Is the error intermittent</label><br />
                 <label for="faultIsIntermittent">Yes</label>
                 <input type="radio" id="faultIsIntermittent" name="intermittentFault" required /><br />
@@ -87,8 +22,6 @@
                 <label for="notSure">Not sure</label>
                 <input type="radio" id="notSure" name="intermittentFault" required /><br />
                 <button type="submit" onclick="intermittentSelection()" name="Next">Next</button>
-            </div>
-        </div>
 
 
         <div id="intermittentDescription" style="display:none">

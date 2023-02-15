@@ -28,11 +28,17 @@
         <label name="otherErrors">Yes @Html.RadioButton("yes", false)</label>
         <label name="otherErrors">No @Html.RadioButton("no", false)</label>
     </div>
+    <div>
+        <label for="errorDescription">Can you give us some details about your error</label>
+        @Html.TextArea("errordescription", new{ maxlength = 250 })
+        <span>0 of 250</span>
+    </div>
     <button type="submit" onclick="showDescription()" name="Next">Next</button>
 }
 
-<!--checkboxes-->
-
-<!--textbox-->
-<label for="errorDescription">Can you describe your error:</label><br />
-<input type="text" id="errorDescription" name="errorDescription" maxlength="250" /><br />
+<script type="text/javascript">
+    $("textarea[errordescripton]").keyup(function () {
+        var charLength = $(this).val().length;
+        var charLimit = $(this).attr("data-limit-input");
+        $(this).next("span").html(charLength + " of " + charLimit);
+</script>

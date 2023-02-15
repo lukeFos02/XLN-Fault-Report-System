@@ -1,38 +1,48 @@
 ﻿@inject IHttpContextAccessor contextAccessor;
 @{
     ViewData["Title"] = "XLN Landing Page";
+
 }
 
+<html>
+<head>
+    <link rel="stylesheet" href="~css/site.css" />
+</head>
 <body>
-    <div class="greyBackground">
-        <p>
-        Need to call Customer Service? 0344 880 7777
-        </p>
-    </div>
-    <div class="bluebox">
-        <p>
-            @contextAccessor.HttpContext.Session.GetString("Username").ToString()
-        </p>
-        <p>
-            ACCOUNT OVERVIEW
-        </p>
-    </div>
-    <div>
-        <p>
-            <span style="font-weight:bolder">Your account is fully paid.</span> Your next invoice will be on or after (dd/mm/yyyy).
-        </p>
-        <p>
-            Click here to set up and start and start paying by direct debit
-        </p>
-    </div>
-    <div class="greyBackground">
-        <p>
-            COVID-19 Help - View FAQs
-        </p>
-        <p>
-            <div class="LPBox">
-                <a asp-controller="LandingPage" asp-action="NumbersPage">Report A Fault</a>
+    <div class="container">
+        <div class="customerServiceTitle">
+            <p>
+                Need to call Customer Service? <span style="color: #2596be">0344 880 7777</span>
+            </p>
+        </div>
+        <div class="accountOverviewBox">
+            <p>
+                @contextAccessor.HttpContext.Session.GetString("Username").ToString()
+            </p>
+            <p>
+                <strong>ACCOUNT OVERVIEW</strong>
+            </p>
+        </div>
+        <div class="accountPayment">
+            <p>
+                <strong>Your account is fully paid</strong> Your next invoice will be avilable on or after
+            </p>
+            <p>
+                Click here to set up and start and start paying by direct debit
+            </p>
+        </div>
+        <div class="boxesContainer">
+            <div class="box">
+                Bills And Statments
+
             </div>
-        </p>
+            <div class="reportFault box">
+                <a asp-controller="LandingPage" asp-action="NumbersPage">Report a Fault</a>
+            </div>
+            <div class="box">
+                Communication Box
+            </div>
+        </div>
     </div>
 </body>
+</html>
