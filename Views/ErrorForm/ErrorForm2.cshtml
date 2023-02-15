@@ -30,16 +30,21 @@
     </div>
     <div>
         <label for="errorDescription">Can you give us some details about your error</label>
-        @Html.TextArea("errordescription", new{ maxlength = 250 })
-        <span>0 of 250</span>
+        @Html.TextArea("errordescription", htmlAttributes:new{@id = "errordescription"})
+        <div id="the-count">
+            <span id="current">0</span>
+            <span id="maximum">/ 300</span>
+        </div>
     </div>
     <button type="submit" onclick="showDescription()" name="Next">Next</button>
 }
 
 <script type="text/javascript">
-    $("errordescription").keyup(function () {
-        var charLength = $(this).val().length;
-        var charLimit = $(this).attr("data-limit-input");
-        $(this).next("span").html(charLength + " of " + charLimit);
-    }
+    $('#errordescription').keyup(function() {
+        var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+    current.text(characterCount);
+    });
 </script>

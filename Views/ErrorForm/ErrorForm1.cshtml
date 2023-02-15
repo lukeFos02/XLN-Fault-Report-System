@@ -1,12 +1,65 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Report A Fault";
 }
-@using (Html.BeginForm("ErrorForm1", "ErrorForm", FormMethod.Post))
+@using (Html.BeginForm("ErrorForm1", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateCheckBoxes()" }))
 {
-    <div>
-        <label>Client Incident Type @Html.CheckBox("cli")</label>
-        <label>Broadband @Html.CheckBox("bb")</label>
-    </div>
-    <button type="submit" onclick="showErrorList()" name="Next">Next</button>
+    <html>
+    <head>
+        <link rel="stylesheet" href="~css/site.css" />
+    </head>
+    <body>
+        <div>
+            <label class="display-3">
+                Select Incident Type
+            </label>
+            <div class="form-check">
+                <label class="form-check-label">Client Incident Type @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
+                <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
+            </div>
+            <button type="submit" class="btn btn-primary" name="Next">Next</button>
+        </div>
+    </body>
+    </html>
 }
+
+<script type="text/javascript">
+    /*
+    function checkedCli(){
+        var checked = true;
+        if(checked == true){
+            document.getElementById("moveToErrorInformation").style.opacity = 1;
+            document.getElementById("moveToErrorInformation").disabled = false;
+            checked = false;
+        }
+        else if(checked == false){
+            document.getElementById("moveToErrorInformation").style.opacity = 0.2;
+            document.getElementById("moveToErrorInformation").disabled = true;
+            checked = true;
+        }
+    }
+
+    function checkedBb() {
+        var checked = true;
+        if (checked == true) {
+            document.getElementById("moveToErrorInformation").style.opacity = 1;
+            document.getElementById("moveToErrorInformation").disabled = false;
+            checked = false;
+        }
+        else if (checked == false) {
+            document.getElementById("moveToErrorInformation").style.opacity = 0.2;
+            document.getElementById("moveToErrorInformation").disabled = true;
+            checked = true;
+        }
+    }
+
+    */
+    function validateCheckBoxes() {
+        if (!document.getElementById("cliCheckbox").checked && !document.getElementById("bbCheckbox").checked) {
+            alert("Please select error type");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
