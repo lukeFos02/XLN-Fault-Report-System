@@ -32,7 +32,7 @@ namespace XLN_Fault_Report_System.Controllers
         {
             Asset chosenAsset = _services.GetAsset(asset.AssetId);
             _contextAccessor.HttpContext.Session.SetInt32("ChosenAssetId", chosenAsset.AssetId);
-            return RedirectToAction("WarningPage", "ErrorForm");
+            return RedirectToAction("CustomerDetails", "ErrorForm");
         }
     }
 }

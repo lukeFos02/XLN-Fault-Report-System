@@ -85,6 +85,10 @@ namespace XLN_Fault_Report_System.Controllers
             _contextAccessor.HttpContext.Session.SetString("IntermittentStatus", IntermittentStatus);
             return RedirectToAction("Diagnostics", "ErrorForm");
         }
+        public IActionResult CustomerDetails()
+        {
+            return View();
+        }
 
         //[HttpPost]
         public IActionResult Diagnostics()
