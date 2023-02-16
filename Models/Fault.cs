@@ -11,6 +11,14 @@ namespace XLN_Fault_Report_System.Models
         [ForeignKey(nameof(Asset.AssetId))]
         public int AssetId { get; set; }
         [Required]
+        public string ContactName { get; set; }
+        [Required]
+        public int ContactNumber { get; set; }
+        [Required] 
+        public string ContactHoursFrom { get;set; }
+        [Required]
+        public string ContactHoursTo { get; set;}
+        [Required]
         public string ServiceType { get; set; }
         [Required]  
         public string IncidentType { get; set; }

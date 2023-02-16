@@ -23,7 +23,8 @@
     </strong>
     <label for="seen">I Understand That I may be charged if the fault is mine</label>
     <input onclick="DisplayLink()" type="checkbox" id="seen" name="seenWarning" required /><br />
-    <button style="display:none;" id="WarningPageLink" onclick="location.href='@Url.Action("ErrorForm1", "ErrorForm")';return false;">Next</button>
+    <button style="display:none;" id="WarningPageLink" onclick="location.href='@Url.Action("Index", "LandingPage")';return false;">Submit Fault</button>
+    <button id="WarningPageLink" onclick="location.href='@Url.Action("NumbersPage", "LandingPage")';return false;">Cancel Fault</button>
 </body>
 </html>
 

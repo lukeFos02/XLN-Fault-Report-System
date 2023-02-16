@@ -11,12 +11,13 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <button onclick="moveProgressBar()">Run Diagnostics</button><br />
+    <button id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button><br />
 
     <div id="myBar" style="height:24px;width:0%; background-color:green;"></div><br />
     <div>
         <label id="errorLabel"></label>
     </div>
+    <button style="display:none" id="DiagnosticsPageLink" onclick="location.href='@Url.Action("WarningPage", "ErrorForm")';return false;">Continue</button>
 
 </body>
 </html>
@@ -40,27 +41,30 @@
         var randomNumber = Math.floor((Math.random() * 6) + 1);
 
 
-        switch (randomNumber) {           
+        switch (randomNumber) {
             case 1:
-        errorLabel.innerHTML = "Line fault underground";
-        break;
+                errorLabel.innerHTML = "Line fault underground";
+                break;
             case 2:
-        errorLabel.innerHTML = "Line fault overground";
-        break;
+                errorLabel.innerHTML = "Line fault overground";
+                break;
             case 3:
-        errorLabel.innerHTML = "Exchange fault";
-        break;
+                errorLabel.innerHTML = "Exchange fault";
+                break;
             case 4:
-        errorLabel.innerHTML = "Fault found on 3rd party equipment";
-        break;
+                errorLabel.innerHTML = "Fault found on 3rd party equipment";
+                break;
             case 5:
-        errorLabel.innerHTML = "Inconclusive";
-        break;
+                errorLabel.innerHTML = "Inconclusive";
+                break;
             case 6:
-        errorLabel.innerHTML = "No fault found";
-        break;
+                errorLabel.innerHTML = "No fault found";
+                break;
             default:
-        break;
-    }
+                break;
+        }
+
+        //document.getElementById("diagnosticsButton").disabled = true;
+        document.getElementById("DiagnosticsPageLink").style.display = 'block';
     }
 </script>

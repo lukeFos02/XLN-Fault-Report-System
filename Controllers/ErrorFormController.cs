@@ -19,10 +19,6 @@ namespace XLN_Fault_Report_System.Controllers
         {
             return View();
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult ErrorForm1()
         {
             return View();
@@ -77,10 +73,10 @@ namespace XLN_Fault_Report_System.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ErrorForm3(bool yes, bool no, string intermittentdescription)
+        public IActionResult ErrorForm3(string intermittent, string intermittentdescription)
         {
             var IntermittentStatus = "";
-            if (yes != false) { IntermittentStatus += "Yes"; } else { IntermittentStatus += "No"; }
+            if (intermittent == "yes") { IntermittentStatus += "Yes"; } else { IntermittentStatus += "No"; }
             if (intermittentdescription != null) { _contextAccessor.HttpContext.Session.SetString("IntermittentDescription", intermittentdescription); }
             _contextAccessor.HttpContext.Session.SetString("IntermittentStatus", IntermittentStatus);
             return RedirectToAction("Diagnostics", "ErrorForm");
@@ -88,6 +84,15 @@ namespace XLN_Fault_Report_System.Controllers
         public IActionResult CustomerDetails()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult CustomerDetails(string contactname, string contactnumber, string contacthoursfrom, string contacthoursto)
+        {
+            _contextAccessor.HttpContext.Session.SetString("ContactName", contactname);
+            _contextAccessor.HttpContext.Session.SetString("ContactNumber", contactnumber);
+            _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
+            _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);
+            return RedirectToAction("ErrorForm1", "ErrorForm");
         }
 
         //[HttpPost]

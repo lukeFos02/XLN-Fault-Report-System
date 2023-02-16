@@ -4,5 +4,22 @@
 }
 
 @using(Html.BeginForm("CustomerDetails", "ErrorForm", FormMethod.Post)){
-    
+    <div>
+        <p>
+            <label>Contact Name*   @Html.TextBox("contactname")</label>
+        </p>
+        <p>
+            <label>Contact Number* @Html.TextBox("contactnumber")</label>
+        </p>
+        <p>
+            Business Contact Hours
+        </p>
+        <p>
+            <label>From* @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
+        </p>
+        <p>
+            <label>To*   @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
+        </p>
+        <p class=""><input type="submit" name="Next" value="Submit Details"></p>
+    </div>    
 }
