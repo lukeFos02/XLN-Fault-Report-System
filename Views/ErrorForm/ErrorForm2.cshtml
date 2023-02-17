@@ -2,49 +2,70 @@
     ViewData["Title"] = "Report A Fault";
 }
 
-@using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post))
+@using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDescription()" }))
 {
-    <div>
-        <strong><label id="ClItitle">CLI Incident Type</label><br /></strong>
-        <label>Bell not ringing @Html.CheckBox("bellnotring")</label>
-        <label>Continuois dial tone @Html.CheckBox("contdialtone")</label>
-        <label>Crossed lines @Html.CheckBox("crossedlines")</label>
-        <label>Cuts off @Html.CheckBox("cutsoff")</label>
-        <label>No dial tone @Html.CheckBox("nodialtone")</label>
-        <label>Noisy line @Html.CheckBox("noisy")</label>
-        <label>Damage @Html.CheckBox("damage")</label>
-    </div>
-    <div>
-        <strong><label id="BbTitle">BB Incident Type</label><br /></strong>
-        <label>Intermittent conection @Html.CheckBox("intermittent")</label>
-        <label>Early life failure @Html.CheckBox("earlylife")</label>
-        <label>Broadband Fault @Html.CheckBox("broadbandfault")</label>
-        <label>Landline fault @Html.CheckBox("landlinefault")</label>
-        <label>Firmware upgraded @Html.CheckBox("firmware")</label>
-        <label>No web pages loading @Html.CheckBox("webpages")</label>
-    </div>
-    <div>
-        <label>Do you have any others errors?</label>
-        <label name="otherErrors">Yes @Html.RadioButton("otherErrors", "yes")</label>
-        <label name="otherErrors">No @Html.RadioButton("otherErrors", "no")</label>
-    </div>
-    <div>
-        <label for="errorDescription">Can you give us some details about your error</label>
-        @Html.TextArea("errordescription", htmlAttributes:new{@id = "errordescription"})
-        <div id="the-count">
-            <span id="current">0</span>
-            <span id="maximum">/ 300</span>
+    <div class="float-container">
+        <div class="text-left">
+            <h1 class="display-6">Please Fill in the Error Details</h1>
+        </div>
+
+        <div class="float-child">
+            <strong><label>CLI Incident Type</label><br /></strong>
+            <label>@Html.CheckBox("bellnotring")Bell not ringing</label>
+            <label>@Html.CheckBox("contdialtone")Continuois dial tone</label>
+            <label>@Html.CheckBox("crossedlines")Crossed lines</label>&nbsp;&nbsp;&nbsp;
+            <label>@Html.CheckBox("cutsoff")Cuts off</label>
+            <label>@Html.CheckBox("nodialtone")No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>@Html.CheckBox("noisy")Noisy line</label><br />
+            <label>@Html.CheckBox("damage")Damage</label><br />
+        </div>
+
+        <div class="float-child">
+            <strong><label>BB Incident Type</label><br /></strong>
+            <label>@Html.CheckBox("intermittent")Intermittent conection</label>
+            <label>@Html.CheckBox("earlylife")Early life failure</label>
+            <label>@Html.CheckBox("broadbandfault")Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>@Html.CheckBox("landlinefault")Landline fault</label>
+            <label>@Html.CheckBox("firmware")Firmware upgraded</label><br />
+            <label>@Html.CheckBox("webpages")No web pages loading</label><br />
         </div>
     </div>
-    <button type="submit" onclick="showDescription()" name="Next">Next</button>
+
+    <div id="errorSelectionContainer">
+        <label>Do you have any others errors?</label>
+        <label name="otherErrors">Yes @Html.RadioButton("otherErrors", "yes", new {id="otherError", required="required"})</label>
+        <label name="otherErrors">No @Html.RadioButton("otherErrors", "no", new {id="otherError"})</label>
+    </div>
+    <label for="errordescription">Write Details for your error</label>
+    <div class="form-group">
+        @Html.TextArea("errordescription", htmlAttributes:new{id = "errordescription", required="required", onkeyup="countChars(this);", cols="65", rows="10"})
+    </div>
+    <p id="characterLimit"></p>
+    <div style="display:none;" id="limitAlert" role="alert">
+        <p style="color:red;">The character limit for the description is 250, please do not go over it</p>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" name="Next">Next</button>
+        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+    </div>
+
 }
 
 <script type="text/javascript">
-    $('#errordescription').keyup(function() {
-        var characterCount = $(this).val().length,
-        current = $('#current'),
-        maximum = $('#maximum'),
-        theCount = $('#the-count');
-    current.text(characterCount);
-    });
+    function countChars(obj) {
+        document.getElementById("characterLimit").innerHTML = obj.value.length + ' /250 Characters';
+        if (obj.value.length > 250) {
+            document.getElementById("characterLimit").innerHTML = '<span style="color: red;">' + obj.value.length + ' out of the 250 characters limit</span>';
+        }
+    }
+
+    function validateDescription() {
+        if (document.getElementById("errordescription").value.length > 250) {
+            document.getElementById("limitAlert").style.display = 'block';
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 </script>

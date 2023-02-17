@@ -14,52 +14,32 @@
             </label>
             <div class="form-check">
                 <label class="form-check-label">Client Incident Type @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
+
                 <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
+                <div style="display:none;" id="checkBoxAlert" role="alert">
+                    <p style="color:red;">Please select an Error Type</p>
+                </div>
+
+
             </div>
+        </div>
+        <div>
             <button type="submit" class="btn btn-primary" name="Next">Next</button>
+            <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
         </div>
     </body>
     </html>
 }
 
 <script type="text/javascript">
-    /*
-    function checkedCli(){
-        var checked = true;
-        if(checked == true){
-            document.getElementById("moveToErrorInformation").style.opacity = 1;
-            document.getElementById("moveToErrorInformation").disabled = false;
-            checked = false;
-        }
-        else if(checked == false){
-            document.getElementById("moveToErrorInformation").style.opacity = 0.2;
-            document.getElementById("moveToErrorInformation").disabled = true;
-            checked = true;
-        }
-    }
 
-    function checkedBb() {
-        var checked = true;
-        if (checked == true) {
-            document.getElementById("moveToErrorInformation").style.opacity = 1;
-            document.getElementById("moveToErrorInformation").disabled = false;
-            checked = false;
-        }
-        else if (checked == false) {
-            document.getElementById("moveToErrorInformation").style.opacity = 0.2;
-            document.getElementById("moveToErrorInformation").disabled = true;
-            checked = true;
-        }
-    }
-
-    */
     function validateCheckBoxes() {
         if (!document.getElementById("cliCheckbox").checked && !document.getElementById("bbCheckbox").checked) {
-            alert("Please select error type");
+            document.getElementById("checkBoxAlert").style.display = 'block';
             return false;
         }
         else {
             return true;
         }
     }
-</script>666
+</script>

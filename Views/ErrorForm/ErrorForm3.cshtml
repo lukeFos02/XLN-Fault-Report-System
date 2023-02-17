@@ -1,17 +1,31 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Report A Fault";
 }
-@using (Html.BeginForm("ErrorForm3", "ErrorForm", FormMethod.Post))
+@using (Html.BeginForm("ErrorForm3", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateForm()" }))
 {
     <div>
         <strong><label>Is the error intermittent?</label></strong>
-        <label>Yes @Html.RadioButton("intermittent", "yes")</label>
+        <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", required = "required"})</label>
         <labe>No @Html.RadioButton("intermittent", "no")</labe>
     </div>
     <div>
         <label>Can you state the pattern of the errors?</label>
-        @Html.TextArea("intermittentdescription", new { maxlength = 250})
+        @Html.TextArea("intermittentdescription", new {id="intermittentdescription", maxlength = 250})
     </div>
-    <button type="submit" onclick="showDescription()" name="Next">Next</button>
+    <div>
+        <button type="submit" class="btn btn-primary" name="Next">Next</button>
+        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+    </div>
 }
+
+<script type="text/javascript">
+    function validateForm() {
+        if (document.getElementById("intermittentError").checked && document.getElementById("intermittentdescription").value == "") {
+            document.getElementById("intermittentdescription").required = "required";
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>

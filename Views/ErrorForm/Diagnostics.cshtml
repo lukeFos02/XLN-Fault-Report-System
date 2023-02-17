@@ -1,7 +1,6 @@
 ﻿@inject IHttpContextAccessor contextaccessor
 @{
     ViewData["Title"] = "Diagnostics Test";
-    string diagresult = "";
 }
 
 
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <button id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button><br />
+    <button class="btn btn-danger" id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button><br />
 
     <div id="myBar" style="height:24px;width:0%; background-color:green;"></div><br />
     @using(Html.BeginForm("Diagnostics", "ErrorForm", FormMethod.Post))
@@ -65,9 +64,10 @@
                 break;
         }
 
-        //document.getElementById("diagnosticsButton").disabled = true;
+        document.getElementById("diagnosticsButton").disabled = true;
         document.getElementById("submitButton").style.display = 'block';
     }
+
 
     function OnSubmit() {
         document.getElementById("DiagnosticsPageLink").value = document.getElementById("errorLabel").innerHTML;

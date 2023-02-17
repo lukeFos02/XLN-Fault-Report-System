@@ -1,25 +1,41 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Enter Your Details";
 }
 
-@using(Html.BeginForm("CustomerDetails", "ErrorForm", FormMethod.Post)){
-    <div>
-        <p>
-            <label>Contact Name*   @Html.TextBox("contactname")</label>
-        </p>
-        <p>
-            <label>Contact Number* @Html.TextBox("contactnumber")</label>
-        </p>
-        <p>
-            Business Contact Hours
-        </p>
-        <p>
-            <label>From* @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
-        </p>
-        <p>
-            <label>To*   @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
-        </p>
-        <p class=""><input type="submit" name="Next" value="Submit Details"></p>
-    </div>    
+@using (Html.BeginForm("CustomerDetails", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDetails()" }))
+{
+    <html>
+    <body>
+        <div>
+            <div>
+                <p>
+                    <label>Contact Name<strong>*</strong><br />   @Html.TextBox("contactname", "", new {id="contactName", required="required"})</label>
+                </p>
+                <p>
+                    <label>Contact Number<strong>*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required"})</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Business Contact Hours
+                </p>
+                <p>
+                    <label>From<strong>*</strong> @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
+                </p>
+                <p>
+                    <label>To<strong>*</strong> &nbsp;&nbsp;&nbsp;&nbsp; @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
+                </p>
+                <p>
+                    <input type="submit" name="Next" class="btn btn-primary" value="Submit Details">
+                    <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+                </p>
+            </div>
+        </div>
+    </body>
+    </html>
+
 }
+
+<script type="text/javascript">
+
+</script>
