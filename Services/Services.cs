@@ -42,6 +42,11 @@ namespace XLN_Fault_Report_System.Services
 			var asset = _context.Assets.FirstOrDefault(a => a.AssetId == id);
 			return asset as Asset;
 		}
+		public void SaveFault(Fault fault)
+		{
+			_context.Faults.Add(fault);	
+			_context.SaveChanges();
+		}
 	}
 	public interface IServices
 	{
@@ -49,5 +54,6 @@ namespace XLN_Fault_Report_System.Services
 		bool AuthenticateUser(string username, string passcode);
 		List<Asset> GetUsersAssets(string username, string passcode);
 		Asset GetAsset(int id);	
+		void SaveFault(Fault fault);	
 	}
 }
