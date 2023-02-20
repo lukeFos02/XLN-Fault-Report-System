@@ -37,6 +37,14 @@ namespace XLN_Fault_Report_System.Services
             List<Asset> assets = results.ToList();
 			return assets;
         }
+		public List<Fault> GetUsersFaults(string username, string passcode)
+		{
+            var User = _context.Users.FirstOrDefault(authUser => authUser.UserName == username && authUser.Password == passcode);
+			var FaultList = _context.Faults.ToList();
+			var results = FaultList.Where(f => f.UserId == User.UserId);
+			List<Fault> faults = results.ToList();
+			return faults;	
+        }
 		public Asset GetAsset(int id)
 		{
 			var asset = _context.Assets.FirstOrDefault(a => a.AssetId == id);
@@ -53,6 +61,7 @@ namespace XLN_Fault_Report_System.Services
 		User GetUser(string username, string passcode);
 		bool AuthenticateUser(string username, string passcode);
 		List<Asset> GetUsersAssets(string username, string passcode);
+		List<Fault> GetUsersFaults(string username, string passcode);
 		Asset GetAsset(int id);	
 		void SaveFault(Fault fault);	
 	}

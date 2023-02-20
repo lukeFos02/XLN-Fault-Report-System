@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using XLN_Fault_Report_System.Services;
 using XLN_Fault_Report_System.Models;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 
 namespace XLN_Fault_Report_System.Controllers
 {
@@ -22,7 +23,18 @@ namespace XLN_Fault_Report_System.Controllers
             string Username = _contextAccessor.HttpContext.Session.GetString("Username");
             string Password = _contextAccessor.HttpContext.Session.GetString("Password");
             User User = _services.GetUser(Username, Password);
-            List<Asset> Assets = _services.GetUsersAssets(Username, Password);  
+            List<Asset> Assets = _services.GetUsersAssets(Username, Password);
+            List<Fault> Faults = _services.GetUsersFaults(Username, Password);
+            foreach (Asset a in Assets)
+            {
+                foreach (Fault f in Faults)
+                {
+                    if (a.AssetId == f.AssetId)
+                    {
+                        a.Faults.Add(f);
+                    }
+                }
+            }
             TempData["User"] = User;
             TempData["UsersAssets"] = Assets;
             return View();

@@ -24,9 +24,16 @@
                         <button type="submit" class="btn btn-primary">Report Fault</button>
                     </div>
                     <div class="historyBox">
-                        <p style="text-align: center">
-                            Fault History for this Line
-                        </p>
+                        Fault History for this Line
+                        @if (a.Faults != null)
+                        {
+                            @foreach (Fault f in a.Faults)
+                            {
+                                <div>
+                                    @f.ContactName
+                                </div>
+                            }
+                        }
                         <!--Add fault status and history if appicable here-->
                     </div>
                 </form>

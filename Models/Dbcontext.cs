@@ -22,10 +22,10 @@ namespace XLN_Fault_Report_System.Models
 				entity.HasKey(k => k.UserId);
 			});
             builder.Entity<Asset>(entity => {
-                entity.HasKey(k => k.AssetId);
+				entity.HasKey(k => k.AssetId);
             });
             builder.Entity<Fault>(entity => {
-                entity.HasKey(k => k.FaultId);
+                entity.HasKey(k => k.FaultId);	
             });
         }
 	}

@@ -128,16 +128,15 @@ label {
 }
 
 .numbersContainer {
-    width: 900px;
+    width: 1300px;
     overflow: hidden;
 }
 
 .numberBox {
-    position: relative;
+    float: left;
     margin: 20px;
     padding: 20px;
     width: 300px;
-    min-height: 200px;
     display: grid;
     grid-template-rows: 20px 50px 1fr 50px;
     border-radius: 10px;
@@ -147,17 +146,16 @@ label {
 }
 
 .historyBox {
-    position: relative;
+    float: left;
     margin: 20px;
     padding: 20px;
     width: 600px;
-    min-height: 200px;
     display: grid;
     grid-template-rows: 20px 50px 1fr 50px;
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     background-color: white;
-    align-content: center;
+    align-items: center;
 }
 
 .float-container {

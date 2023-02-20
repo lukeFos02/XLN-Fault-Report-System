@@ -11,8 +11,8 @@ using XLN_Fault_Report_System.Models;
 namespace XLNFaultReportSystem.Migrations
 {
     [DbContext(typeof(Dbcontext))]
-    [Migration("20230217123838_6")]
-    partial class _6
+    [Migration("20230220144200_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,6 +102,9 @@ namespace XLNFaultReportSystem.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("FaultId");
 

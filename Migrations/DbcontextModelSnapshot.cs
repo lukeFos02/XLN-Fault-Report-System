@@ -10,7 +10,7 @@ using XLN_Fault_Report_System.Models;
 namespace XLNFaultReportSystem.Migrations
 {
     [DbContext(typeof(Dbcontext))]
-    partial class LoginDbcontextModelSnapshot : ModelSnapshot
+    partial class DbcontextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -99,6 +99,9 @@ namespace XLNFaultReportSystem.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("FaultId");
 
