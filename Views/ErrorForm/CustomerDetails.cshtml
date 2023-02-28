@@ -23,7 +23,9 @@
                     Business Contact Hours
                 </p>
                 <p>
-                    @ViewBag.ContactHours
+                    <p>
+                        @ViewBag.ContactHours
+                    </p>
                     <label>From<strong>*</strong> @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
                 </p>
                 <p>

@@ -1,5 +1,7 @@
-﻿@{
+﻿@inject IHttpContextAccessor contextAccessor
+@{
     ViewData["Title"] = "Report A Fault";
+    string options = contextAccessor.HttpContext.Session.GetString("ServiceType");
 }
 
 @using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDescription()" }))
@@ -8,27 +10,31 @@
         <div class="text-left">
             <h1 class="display-6">Please Fill in the Error Details</h1>
         </div>
-
-        <div class="float-child">
-            <strong><label>CLI Incident Type</label><br /></strong>
-            <label>@Html.CheckBox("bellnotring")Bell not ringing</label>
-            <label>@Html.CheckBox("contdialtone")Continuois dial tone</label>
-            <label>@Html.CheckBox("crossedlines")Crossed lines</label>
-            <label>@Html.CheckBox("cutsoff")Cuts off</label>
-            <label>@Html.CheckBox("nodialtone")No dial tone</label>
-            <label>@Html.CheckBox("noisy")Noisy line</label><br />
-            <label>@Html.CheckBox("damage")Damage</label><br />
-        </div>
-
-        <div class="float-child">
-            <strong><label>BB Incident Type</label><br /></strong>
-            <label>@Html.CheckBox("intermittent")Intermittent conection</label>
-            <label>@Html.CheckBox("earlylife")Early life failure</label>
-            <label>@Html.CheckBox("broadbandfault")Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label>@Html.CheckBox("landlinefault")Landline fault</label>
-            <label>@Html.CheckBox("firmware")Firmware upgraded</label><br />
-            <label>@Html.CheckBox("webpages")No web pages loading</label><br />
-        </div>
+        @if (options.Contains("Client") == true)
+        {
+            <div class="float-child">
+                <strong><label>CLI Incident Type</label><br /></strong>
+                <label>@Html.CheckBox("bellnotring")Bell not ringing</label>
+                <label>@Html.CheckBox("contdialtone")Continuois dial tone</label>
+                <label>@Html.CheckBox("crossedlines")Crossed lines</label>
+                <label>@Html.CheckBox("cutsoff")Cuts off</label>
+                <label>@Html.CheckBox("nodialtone")No dial tone</label>
+                <label>@Html.CheckBox("noisy")Noisy line</label><br />
+                <label>@Html.CheckBox("damage")Damage</label><br />
+            </div>
+        }
+        @if (options.Contains("Broadband") == true)
+        {
+            <div class="float-child">
+                <strong><label>BB Incident Type</label><br /></strong>
+                <label>@Html.CheckBox("intermittent")Intermittent conection</label>
+                <label>@Html.CheckBox("earlylife")Early life failure</label>
+                <label>@Html.CheckBox("broadbandfault")Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>@Html.CheckBox("landlinefault")Landline fault</label>
+                <label>@Html.CheckBox("firmware")Firmware upgraded</label><br />
+                <label>@Html.CheckBox("webpages")No web pages loading</label><br />
+            </div>
+        }
     </div>
 
     <div id="errorSelectionContainer">
