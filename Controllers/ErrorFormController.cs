@@ -89,9 +89,30 @@ namespace XLN_Fault_Report_System.Controllers
         public IActionResult CustomerDetails(string contactname, string contactnumber, string contacthoursfrom, string contacthoursto)
         {
             _contextAccessor.HttpContext.Session.SetString("ContactName", contactname);
-            _contextAccessor.HttpContext.Session.SetString("ContactNumber", contactnumber);
-            _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
-            _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);
+            try
+            {
+                int contactnumberint = Convert.ToInt32(contactnumber);
+                _contextAccessor.HttpContext.Session.SetString("ContactNumber", contactnumber);
+            }
+            catch
+            {
+                ViewBag.ContactNumber = String.Format("Please enter a valid phone number");
+                return View();
+            }
+            try
+            {
+                string contacthoursfromnew = contacthoursfrom.Replace(":", "");
+                string contacthourstonew = contacthoursto.Replace(":", "");
+                int contacthoursfromint = Convert.ToInt32(contacthoursfromnew);
+                int contacthourstoint = Convert.ToInt32(contacthourstonew);
+                _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
+                _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);
+            }
+            catch
+            {
+                ViewBag.ContactHours = String.Format("Please Insert A Vaild Time");
+                return View();
+            }
             return RedirectToAction("ErrorForm1", "ErrorForm");
         }
         public IActionResult FaultSubmitted()

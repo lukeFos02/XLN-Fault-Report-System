@@ -12,6 +12,9 @@
                     <label>Contact Name<strong>*</strong><br />   @Html.TextBox("contactname", "", new {id="contactName", required="required"})</label>
                 </p>
                 <p>
+                    <p>
+                        @ViewBag.ContactNumber
+                    </p>
                     <label>Contact Number<strong>*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required"})</label>
                 </p>
             </div>
@@ -20,6 +23,7 @@
                     Business Contact Hours
                 </p>
                 <p>
+                    @ViewBag.ContactHours
                     <label>From<strong>*</strong> @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
                 </p>
                 <p>
