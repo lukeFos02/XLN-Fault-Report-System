@@ -15,7 +15,7 @@
                     <p>
                         @ViewBag.ContactNumber
                     </p>
-                    <label>Contact Number<strong>*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required"})</label>
+                    <label>Contact Number<strong>*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required", @placeholder = "e.g. 07XXX XXXXXX"})</label>
                 </p>
             </div>
             <div>
