@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using XLN_Fault_Report_System.Models;
@@ -37,7 +39,7 @@ namespace XLN_Fault_Report_System.Controllers
                 ServiceType = ServiceType + ",Broadband";
             }
             _contextAccessor.HttpContext.Session.SetString("ServiceType", ServiceType);
-            return RedirectToAction("ErrorForm2", "ErrorForm");
+            return RedirectToAction("ErrorForm3", "ErrorForm");
         }
         public IActionResult ErrorForm2()
         {
@@ -113,6 +115,26 @@ namespace XLN_Fault_Report_System.Controllers
                 ViewBag.ContactHours = String.Format("Please Insert A Vaild Time");
                 return View();
             }
+
+            string firstTwoNumbers = contacthoursfrom.Substring(0, 2);
+            string lastTwoNumbers = contacthoursfrom.Substring(3);
+            string hoursToFirstTwo = contacthoursto.Substring(0, 2);
+            string hoursToLastTwo = contacthoursto.Substring(3);
+
+            if (int.Parse(hoursToFirstTwo) < int.Parse(firstTwoNumbers))
+            {
+                ViewBag.ContactHours = String.Format("Please ensure that the value of the hours is from lower to higher");
+                return View();
+            }
+            else if (int.Parse(hoursToFirstTwo) == int.Parse(firstTwoNumbers))
+            {
+                if (int.Parse(hoursToLastTwo) <= int.Parse(lastTwoNumbers))
+                {
+                    ViewBag.ContactHours = String.Format("Please ensure that the value of the hours is from lower to higher");
+                    return View();
+                }
+            }
+
             _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
             _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);
             return RedirectToAction("ErrorForm1", "ErrorForm");
@@ -120,6 +142,7 @@ namespace XLN_Fault_Report_System.Controllers
         public IActionResult FaultSubmitted()
         {
             Fault fault = new Fault();
+
             fault.AssetId = (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
             fault.ContactName = _contextAccessor.HttpContext.Session.GetString("ContactName");
             fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
@@ -132,7 +155,39 @@ namespace XLN_Fault_Report_System.Controllers
             fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
             fault.DiagnosticResult = _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
             fault.Status = "Submitted";
-            _service.SaveFault(fault);  
+
+            _service.SaveFault(fault);
+
+            string to = "hmssos385@gmail.com";
+            string from = "hmssos385@gmail.com";
+            MailMessage message = new MailMessage(from, to);
+
+            Random rand = new Random();
+            int randomNumber = rand.Next();
+            Fault newFault = _service.GetNewFault(fault.AssetId);
+
+            string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
+                " You can talk with a member of our team using this phone number: 077730330";
+            message.Subject = "Error Confirmation";
+            message.Body = mailbody;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            System.Net.NetworkCredential basicCredential1 = new
+            System.Net.NetworkCredential("hmssos385@gmail.com", "ufvnbchfpsdbsjxl");
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            try
+            {
+                client.Send(message);
+            }
+
+            catch (Exception e)
+            {
+                throw e;
+            }
+
             return View();
         }
         public IActionResult Diagnostics()
@@ -145,6 +200,10 @@ namespace XLN_Fault_Report_System.Controllers
             string result = form["diagnostictest"];
             _contextAccessor.HttpContext.Session.SetString("DiagnosticResult", result);
             return RedirectToAction("WarningPage", "ErrorForm");
+        }
+        public IActionResult SelfCheckQuestions()
+        {
+            return View();
         }
 
     }

@@ -55,6 +55,11 @@ namespace XLN_Fault_Report_System.Services
 			_context.Faults.Add(fault);	
 			_context.SaveChanges();
 		}
+		public Fault GetNewFault(int assetid)
+		{
+			var fault = _context.Faults.FirstOrDefault(a => a.Status == "Submitted" && a.AssetId == assetid);
+			return fault;
+		}
 	}
 	public interface IServices
 	{
@@ -63,6 +68,7 @@ namespace XLN_Fault_Report_System.Services
 		List<Asset> GetUsersAssets(string username, string passcode);
 		List<Fault> GetUsersFaults(string username, string passcode);
 		Asset GetAsset(int id);	
-		void SaveFault(Fault fault);	
+		void SaveFault(Fault fault);
+		Fault GetNewFault(int assetid);
 	}
 }
