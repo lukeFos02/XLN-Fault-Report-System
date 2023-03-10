@@ -39,7 +39,7 @@ namespace XLN_Fault_Report_System.Controllers
                 ServiceType = ServiceType + ",Broadband";
             }
             _contextAccessor.HttpContext.Session.SetString("ServiceType", ServiceType);
-            return RedirectToAction("ErrorForm3", "ErrorForm");
+            return RedirectToAction("ErrorForm2", "ErrorForm");
         }
         public IActionResult ErrorForm2()
         {
@@ -112,7 +112,7 @@ namespace XLN_Fault_Report_System.Controllers
             }
             if (contacthoursfrom == null || contacthoursto == null)
             {
-                ViewBag.ContactHours = String.Format("Please Insert A Vaild Time");
+                ViewBag.ContactHours = String.Format("Please Insert A Time");
                 return View();
             }
 
@@ -137,7 +137,7 @@ namespace XLN_Fault_Report_System.Controllers
 
             _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
             _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);
-            return RedirectToAction("ErrorForm1", "ErrorForm");
+            return RedirectToAction("FaultSubmitted", "ErrorForm");
         }
         public IActionResult FaultSubmitted()
         {

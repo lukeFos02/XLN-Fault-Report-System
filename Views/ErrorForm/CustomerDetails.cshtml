@@ -7,6 +7,9 @@
     <html>
     <body>
         <div>
+            <h1>
+                Before Proceeding To Report Your Fault We Need Some Contact Details
+            </h1>
             <div>
                 <p>
                     <label>Contact Name<strong>*</strong><br />   @Html.TextBox("contactname", "", new {id="contactName", required="required"})</label>
@@ -32,8 +35,11 @@
                     <label>To<strong>*</strong> &nbsp;&nbsp;&nbsp;&nbsp; @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
                 </p>
                 <p>
-                    <input type="submit" name="Next" class="btn btn-primary" value="Submit Details">
-                    <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+                    Do you wish to proceed with reporting this fault>
+                </p>
+                <p>
+                    <input type="submit" name="Next" class="btn btn-primary" value="Yes">
+                    <button type="submit" name="Cancel" class="btn btn-danger" value="No" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">No</button>
                 </p>
             </div>
         </div>
