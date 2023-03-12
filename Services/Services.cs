@@ -68,7 +68,7 @@ namespace XLN_Fault_Report_System.Services
 			{
 				var fault = _context.Faults.Where(a => a.FaultId == f.FaultId).FirstOrDefault();	
 				DateTime faultSubmitDate = DateTime.Parse(f.Time);
-				TimeSpan diff = faultSubmitDate - now;	
+				TimeSpan diff = now - faultSubmitDate;	
 				if (diff.Minutes > 15)
 				{
 					fault.Status = "Fault in progess";
