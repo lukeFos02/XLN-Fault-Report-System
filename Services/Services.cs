@@ -57,9 +57,25 @@ namespace XLN_Fault_Report_System.Services
 		}
 		public Fault GetNewFault(int assetid)
 		{
-			var fault = _context.Faults.FirstOrDefault(a => a.Status == "Submitted" && a.AssetId == assetid);
+			var fault = _context.Faults.FirstOrDefault(a => a.Status == "Fault report pending" && a.AssetId == assetid);
 			return fault;
 		}
+		public void UpdateFaultStatus(List<Fault> faults)
+		{
+			DateTime now = DateTime.Now;
+
+			foreach (Fault f in faults)
+			{
+				var fault = _context.Faults.Where(a => a.FaultId == f.FaultId).FirstOrDefault();	
+				DateTime faultSubmitDate = DateTime.Parse(f.Time);
+				TimeSpan diff = faultSubmitDate - now;	
+				if (diff.Minutes > 15)
+				{
+					fault.Status = "Fault in progess";
+				}
+			}
+			_context.SaveChanges();
+		}	
 	}
 	public interface IServices
 	{
@@ -70,5 +86,6 @@ namespace XLN_Fault_Report_System.Services
 		Asset GetAsset(int id);	
 		void SaveFault(Fault fault);
 		Fault GetNewFault(int assetid);
+		void UpdateFaultStatus(List<Fault> faults);
 	}
 }

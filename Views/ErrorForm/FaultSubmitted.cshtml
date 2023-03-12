@@ -3,5 +3,7 @@
     ViewData["Title"] = "Fault Submitted";
 }
 <p>
-    you have submitted your fault
+    You have submitted your fault. If you wish to cancel your fault you may do so within 15 minutes to avoid any time related charges<br />
+    <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("NumbersPage","LandingPage")';return false;''">Cancel Error</button>
+    <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return To Landing Page</button>
 </p>

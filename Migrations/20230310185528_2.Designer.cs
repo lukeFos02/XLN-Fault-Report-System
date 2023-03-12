@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XLN_Fault_Report_System.Models;
 
@@ -10,9 +11,11 @@ using XLN_Fault_Report_System.Models;
 namespace XLNFaultReportSystem.Migrations
 {
     [DbContext(typeof(Dbcontext))]
-    partial class DbcontextModelSnapshot : ModelSnapshot
+    [Migration("20230310185528_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,6 +80,7 @@ namespace XLNFaultReportSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ErrorDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IncidentType")
@@ -88,6 +92,7 @@ namespace XLNFaultReportSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IntermittentStatusDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ServiceType")
@@ -95,10 +100,6 @@ namespace XLNFaultReportSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Time")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

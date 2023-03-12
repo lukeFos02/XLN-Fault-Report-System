@@ -25,13 +25,15 @@ namespace XLN_Fault_Report_System.Models
         [Required]
         public string IncidentType { get; set; }
         [AllowNull]
-        public string ErrorDescription { get; set; }
+        public string? ErrorDescription { get; set; }
         [Required]
         public string IntermittentStatus { get; set; }
         [AllowNull]
-        public string IntermittentStatusDescription { get; set; }
+        public string? IntermittentStatusDescription { get; set; }
         [Required]
         public string DiagnosticResult { get; set; }
+        [Required]
+        public string Time { get; set; }    
         [Required]
         public string Status { get; set; }
     }

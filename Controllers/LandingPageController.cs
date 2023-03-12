@@ -23,8 +23,10 @@ namespace XLN_Fault_Report_System.Controllers
             string Username = _contextAccessor.HttpContext.Session.GetString("Username");
             string Password = _contextAccessor.HttpContext.Session.GetString("Password");
             User User = _services.GetUser(Username, Password);
+            _contextAccessor.HttpContext.Session.SetInt32("UsersID", User.UserId);
             List<Asset> Assets = _services.GetUsersAssets(Username, Password);
             List<Fault> Faults = _services.GetUsersFaults(Username, Password);
+            _services.UpdateFaultStatus(Faults);
             foreach (Asset a in Assets)
             {
                 foreach (Fault f in Faults)

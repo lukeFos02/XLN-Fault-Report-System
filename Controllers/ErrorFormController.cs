@@ -143,6 +143,7 @@ namespace XLN_Fault_Report_System.Controllers
         {
             Fault fault = new Fault();
 
+            fault.UserId = (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
             fault.AssetId = (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
             fault.ContactName = _contextAccessor.HttpContext.Session.GetString("ContactName");
             fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
@@ -154,7 +155,8 @@ namespace XLN_Fault_Report_System.Controllers
             fault.IntermittentStatus = _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
             fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
             fault.DiagnosticResult = _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
-            fault.Status = "Submitted";
+            fault.Time = DateTime.Now.ToString();
+            fault.Status = "Fault report pending";
 
             _service.SaveFault(fault);
 
@@ -162,8 +164,6 @@ namespace XLN_Fault_Report_System.Controllers
             string from = "hmssos385@gmail.com";
             MailMessage message = new MailMessage(from, to);
 
-            Random rand = new Random();
-            int randomNumber = rand.Next();
             Fault newFault = _service.GetNewFault(fault.AssetId);
 
             string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
