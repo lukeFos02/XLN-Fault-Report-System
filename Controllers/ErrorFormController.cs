@@ -162,6 +162,8 @@ namespace XLN_Fault_Report_System.Controllers
             string from = "hmssos385@gmail.com";
             MailMessage message = new MailMessage(from, to);
 
+            _service.SaveFault(fault);
+
             Fault newFault = _service.GetNewFault(fault.AssetId);
 
             string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
@@ -185,7 +187,6 @@ namespace XLN_Fault_Report_System.Controllers
             {
                 throw;
             }
-            _service.SaveFault(fault);
 
             return View();
         }
