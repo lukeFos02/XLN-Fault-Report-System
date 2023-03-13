@@ -27,10 +27,10 @@
                         Fault History for this Line
                         @if (a.Faults != null)
                         {
-                            @foreach (Fault f in a.Faults)
+                            @for (int i = 0 ; i < a.Faults.Count/2; i++)
                             {
                                 <div>
-                                    @f.ContactName
+                                    @a.Faults[i].ContactName
                                 </div>
                             }
                         }
