@@ -12,6 +12,6 @@ namespace XLN_Fault_Report_System.Models
 
         [ForeignKey(nameof(User.UserId))]
         public int UserId { get; set; }
-        public List<Fault> Faults { get; set; } 
+        public List<Fault>? Faults { get; set; } 
     }
 }

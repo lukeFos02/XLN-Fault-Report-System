@@ -158,8 +158,6 @@ namespace XLN_Fault_Report_System.Controllers
             fault.Time = DateTime.Now.ToString();
             fault.Status = "Fault report pending";
 
-            _service.SaveFault(fault);
-
             string to = "hmssos385@gmail.com";
             string from = "hmssos385@gmail.com";
             MailMessage message = new MailMessage(from, to);
@@ -183,10 +181,11 @@ namespace XLN_Fault_Report_System.Controllers
                 client.Send(message);
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
+            _service.SaveFault(fault);
 
             return View();
         }
