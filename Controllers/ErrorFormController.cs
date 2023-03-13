@@ -143,18 +143,18 @@ namespace XLN_Fault_Report_System.Controllers
         {
             Fault fault = new Fault();
 
-            fault.UserId = (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
-            fault.AssetId = (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
-            fault.ContactName = _contextAccessor.HttpContext.Session.GetString("ContactName");
-            fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
-            fault.ContactHoursFrom = _contextAccessor.HttpContext.Session.GetString("ContactHoursFrom");
-            fault.ContactHoursTo = _contextAccessor.HttpContext.Session.GetString("ContactHoursTo");
-            fault.ServiceType = _contextAccessor.HttpContext.Session.GetString("ServiceType");
-            fault.IncidentType = _contextAccessor.HttpContext.Session.GetString("IncidentType");
-            fault.ErrorDescription = _contextAccessor.HttpContext.Session.GetString("ErrorDescription");
-            fault.IntermittentStatus = _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
+            fault.UserId                        =             (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
+            fault.AssetId                       =       (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
+            fault.ContactName                   =             _contextAccessor.HttpContext.Session.GetString("ContactName");
+            fault.ContactNumber                 =           _contextAccessor.HttpContext.Session.GetString("ContactNumber");
+            fault.ContactHoursFrom              =        _contextAccessor.HttpContext.Session.GetString("ContactHoursFrom");
+            fault.ContactHoursTo                =          _contextAccessor.HttpContext.Session.GetString("ContactHoursTo");
+            fault.ServiceType                   =             _contextAccessor.HttpContext.Session.GetString("ServiceType");
+            fault.IncidentType                  =            _contextAccessor.HttpContext.Session.GetString("IncidentType");
+            fault.ErrorDescription              =        _contextAccessor.HttpContext.Session.GetString("ErrorDescription");
+            fault.IntermittentStatus            =      _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
             fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
-            fault.DiagnosticResult = _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
+            fault.DiagnosticResult              =        _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
             fault.Time = DateTime.Now.ToString();
             fault.Status = "Fault report pending";
 
