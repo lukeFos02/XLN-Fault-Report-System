@@ -76,6 +76,11 @@ namespace XLN_Fault_Report_System.Services
 			}
 			_context.SaveChanges();
 		}	
+		public Fault GetFault(int id)
+		{
+			var fault = _context.Faults.FirstOrDefault(a => a.FaultId == id);	
+			return fault as Fault;
+		}
 	}
 	public interface IServices
 	{
@@ -87,5 +92,6 @@ namespace XLN_Fault_Report_System.Services
 		void SaveFault(Fault fault);
 		Fault GetNewFault(int assetid);
 		void UpdateFaultStatus(List<Fault> faults);
+		Fault GetFault(int id);
 	}
 }

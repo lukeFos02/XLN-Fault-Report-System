@@ -48,5 +48,10 @@ namespace XLN_Fault_Report_System.Controllers
             _contextAccessor.HttpContext.Session.SetInt32("ChosenAssetId", chosenAsset.AssetId);
             return RedirectToAction("ErrorForm1", "ErrorForm");
         }
+        public IActionResult CancelFault(int fault) 
+        {
+            Fault chosenFault = _services.GetFault(fault);
+            return RedirectToAction("NumbersPage", "LandingPage");
+        }
     }
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="~css/site.css" />
-    <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel =”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+    <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
 </head>
 <body>
     <h1 class="lineHeading">Select The Affected Line</h1>
@@ -19,24 +19,27 @@
                 <form asp-controller="LandingPage" asp-action="NumbersPage" method="post">
                     <div class="numberBox">
                         <div class="phoneNumber">
-                            @a.Number <input type="hidden" asp-for="AssetId" value="@a.AssetId" />
+                            @a.Number <input type="hidden" asp-for="AssetId" value="@a.AssetId"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Report Fault</button>
                     </div>
-                    <div class="historyBox">
-                        Fault History for this Line
-                        @if (a.Faults != null)
-                        {
-                            @for (int i = 0 ; i < a.Faults.Count/2; i++)
-                            {
-                                <div>
-                                    @a.Faults[i].ContactName
-                                </div>
-                            }
-                        }
-                        <!--Add fault status and history if appicable here-->
-                    </div>
                 </form>
+                <div class="historyBox">
+                    Fault History for this Line
+                    @if (a.Faults != null)
+                    {
+                        @for (int i = 0 ; i < a.Faults.Count/2; i++)
+                        {
+                            <div>
+                                 Date Submitted: @a.Faults[i].Time Status: @a.Faults[i].Status @if(a.Faults[i].Status == "Fault report pending")
+                                 {
+                                     @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = a.Faults[i].FaultId})
+                                 }
+                            </div>
+                        }
+                    }
+                    <!--Add fault status and history if appicable here-->
+                </div>
             </p>
         }
     </div>
