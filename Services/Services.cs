@@ -81,6 +81,13 @@ namespace XLN_Fault_Report_System.Services
 			var fault = _context.Faults.FirstOrDefault(a => a.FaultId == id);	
 			return fault as Fault;
 		}
+		public void CancelFault(Fault chosenfault)
+		{
+			var fault = _context.Faults.FirstOrDefault(a => a.FaultId == chosenfault.FaultId);
+			fault.Status = "Customer cancelled Fault";
+			_context.SaveChanges();	
+
+        }
 	}
 	public interface IServices
 	{
@@ -93,5 +100,6 @@ namespace XLN_Fault_Report_System.Services
 		Fault GetNewFault(int assetid);
 		void UpdateFaultStatus(List<Fault> faults);
 		Fault GetFault(int id);
+		void CancelFault(Fault chosenfault);
 	}
 }

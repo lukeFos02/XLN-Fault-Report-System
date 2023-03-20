@@ -51,6 +51,7 @@ namespace XLN_Fault_Report_System.Controllers
         public IActionResult CancelFault(int fault) 
         {
             Fault chosenFault = _services.GetFault(fault);
+            _services.CancelFault(chosenFault);
             return RedirectToAction("NumbersPage", "LandingPage");
         }
     }

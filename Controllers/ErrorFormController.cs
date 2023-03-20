@@ -165,6 +165,7 @@ namespace XLN_Fault_Report_System.Controllers
             _service.SaveFault(fault);
 
             Fault newFault = _service.GetNewFault(fault.AssetId);
+            _contextAccessor.HttpContext.Session.SetInt32("NewFaultID", newFault.FaultId);
 
             string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
                 " You can talk with a member of our team using this phone number: 077730330";
