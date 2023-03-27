@@ -183,10 +183,9 @@ namespace XLN_Fault_Report_System.Controllers
             {
                 client.Send(message);
             }
-
-            catch (Exception)
+            catch
             {
-                throw;
+
             }
 
             return View();

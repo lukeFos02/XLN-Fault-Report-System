@@ -5,27 +5,23 @@
 {
     <html>
     <head>
-        <link rel="stylesheet" href="~css/site.css" />
+        <link rel="stylesheet" href="~/css/ErrorForm1.css" />
     </head>
     <body>
-        <div>
-            <label class="display-3">
-                Select Incident Type
-            </label>
-            <div class="form-check">
-                <label class="form-check-label">Phone @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
 
-                <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
-                <div style="display:none;" id="checkBoxAlert" role="alert">
-                    <p style="color:red;">Please select an Error Type</p>
-                </div>
+        <h1 class="lineHeading">Select Incident Type</h1>
+        <div class="form-check checkboxesCentered">
+            <label class="form-check-label">Phone @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
 
-
+            <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
+            <div style="display:none;" id="checkBoxAlert" role="alert">
+                <p class="alert">&nbsp;&nbsp;Please select an Error Type</p>
             </div>
+
         </div>
-        <div>
-            <button type="submit" class="btn btn-primary" name="Next">Next</button>
-            <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+        <div class="checkboxesCentered">
+            <button type="submit" class="btn btn-info" name="Next">Next</button>
+            <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("NumbersPage","LandingPage")';return false;''">Back</button>
         </div>
     </body>
     </html>

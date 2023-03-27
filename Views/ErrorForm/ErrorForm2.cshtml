@@ -2,57 +2,81 @@
 @{
     ViewData["Title"] = "Report A Fault";
     string options = contextAccessor.HttpContext.Session.GetString("ServiceType");
+    string[] optionslist = options.Split(",");
+    optionslist = optionslist.Where(s => s != optionslist[0]).ToArray();
 }
-
+<head>
+    <link rel="stylesheet" href="~/css/errorform2.css" asp-append-version="true" />
+</head>
 @using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDescription()" }))
 {
-    <div class="float-container">
-        <div class="text-left">
-            <h1 class="display-6">Please Fill in the Error Details</h1>
+    <div class="checkboxcontainer">
+        <div class="float-container">
+            <div class="text-left">
+                <h1 class="display-6">Please Fill in the Error Details</h1>
+            </div>
+            @if (options.Contains("Client") == true)
+            {
+                <div class="float-child">
+                    <strong><label>Phone Incident Type</label><br /></strong>
+                    <label>@Html.CheckBox("bellnotring")&nbsp;Bell not ringing</label>
+                    <label>@Html.CheckBox("contdialtone")&nbsp;Continuois dial tone</label>
+                    <label>@Html.CheckBox("crossedlines")&nbsp;Crossed lines</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("cutsoff")&nbsp;Cuts off</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+                    <label>@Html.CheckBox("nodialtone")&nbsp;No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("noisy")&nbsp;Noisy line</label><br />
+                    <label>@Html.CheckBox("damage")&nbsp;Damage</label><br />
+                </div>
+            }
+            @if (options.Contains("Broadband") == true)
+            {
+                <div class="float-child">
+                    <strong><label>BB Incident Type</label><br /></strong>
+                    <label>@Html.CheckBox("intermittent")&nbsp;Intermittent conection</label>
+                    <label>@Html.CheckBox("earlylife")&nbsp;Early life failure</label>
+                    <label>@Html.CheckBox("broadbandfault")&nbsp;Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("landlinefault")&nbsp;Landline fault</label>
+                    <label>@Html.CheckBox("firmware")&nbsp;Firmware upgraded</label><br />
+                    <label>@Html.CheckBox("webpages")&nbsp;No web pages loading</label><br />
+                </div>
+            }
+            @if (optionslist.Count() == 1)
+            {
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            }
         </div>
-        @if (options.Contains("Client") == true)
-        {
-            <div class="float-child">
-                <strong><label>Phone Incident Type</label><br /></strong>
-                <label>@Html.CheckBox("bellnotring")Bell not ringing</label>
-                <label>@Html.CheckBox("contdialtone")Continuois dial tone</label>
-                <label>@Html.CheckBox("crossedlines")Crossed lines</label>
-                <label>@Html.CheckBox("cutsoff")Cuts off</label>
-                <label>@Html.CheckBox("nodialtone")No dial tone</label>
-                <label>@Html.CheckBox("noisy")Noisy line</label><br />
-                <label>@Html.CheckBox("damage")Damage</label><br />
-            </div>
-        }
-        @if (options.Contains("Broadband") == true)
-        {
-            <div class="float-child">
-                <strong><label>BB Incident Type</label><br /></strong>
-                <label>@Html.CheckBox("intermittent")Intermittent conection</label>
-                <label>@Html.CheckBox("earlylife")Early life failure</label>
-                <label>@Html.CheckBox("broadbandfault")Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label>@Html.CheckBox("landlinefault")Landline fault</label>
-                <label>@Html.CheckBox("firmware")Firmware upgraded</label><br />
-                <label>@Html.CheckBox("webpages")No web pages loading</label><br />
-            </div>
-        }
     </div>
-
-    <div id="errorSelectionContainer">
-        <label>Do you have any others errors?</label>
-        <label name="otherErrors">Yes @Html.RadioButton("otherErrors", "yes", new {id="otherError", required="required"})</label>
-        <label name="otherErrors">No @Html.RadioButton("otherErrors", "no", new {id="otherError"})</label>
+    <p>
+        <div id="errorSelectionContainer">
+            <div class="othererrorsq">
+                <label class="othererrorsql">Do you have any others errors?</label>
+            </div>
+            <div class="othererrorsqcheckbox">
+                <label name="otherErrors">Yes @Html.RadioButton("otherErrors", "yes", new {id="otherError", required="required"})</label>
+                <label name="otherErrors">No @Html.RadioButton("otherErrors", "no", new {id="otherError"})</label>
+            </div>
+        </div>
+    </p>
+    <div class="errordetails">
+        <label for="errordescription">Write some details for your error below</label>
     </div>
-    <label for="errordescription">Write Details for your error</label>
     <div class="form-group">
-        @Html.TextArea("errordescription", htmlAttributes:new{id = "errordescription", required="required", onkeyup="countChars(this);", cols="65", rows="10"})
+        @Html.TextArea("errordescription", htmlAttributes:new{id = "errordescription", required="required", onkeyup="countChars(this);", cols="70", rows="7"})
     </div>
     <p id="characterLimit"></p>
     <div style="display:none;" id="limitAlert" role="alert">
         <p style="color:red;">The character limit for the description is 250, please do not go over it</p>
     </div>
-    <div>
+    <div class="buttons">
         <button type="submit" class="btn btn-primary" name="Next">Next</button>
-        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return</button>
     </div>
 
 }

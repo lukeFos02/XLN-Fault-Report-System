@@ -1,0 +1,68 @@
+﻿.float-container {
+    border-block-color: red;
+    padding: 20px;
+    width: 100%;
+}
+
+.float-child {
+    border-block-color: red;
+    width: 50%;
+    padding: 20px;
+    overflow: hidden;
+    position: center;
+    border-bottom: solid;
+    border-bottom-color: #2596be;
+    border-top: solid;
+    float: left;
+    border-top-color: #2596be;
+}
+
+.display-6{
+    text-align: center;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:bold;
+    color: #2596be;
+}
+
+.othererrorsq {
+    text-align: center;
+    font-weight: bold;
+}
+
+.othererrorsql {
+    padding-top: 2% !important;
+}
+
+.othererrorsqcheckbox{
+    text-align: center;
+}
+
+.errordetails{
+    text-align: center;
+    padding-top: 1%;
+}
+
+.form-group{
+    text-align:center;
+}
+#errordescription {
+    width: 40%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #2596be;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 12px;
+    resize: none;
+}
+#characterLimit{
+    text-align: center;
+    font-size: 11px;
+}
+.buttons{
+    text-align: center;
+}
+.checkboxcontainer{
+    min-width: 100%;
+}

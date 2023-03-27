@@ -1,0 +1,16 @@
+﻿@import url('errorform1.css');
+
+.lineHeading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: #2596be;
+    height: 75px;
+    text-align: center;
+    margin: 0, 0, 0, 0;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.checkboxesCentered {
+    text-align: center;
+}

@@ -157,16 +157,3 @@ label {
     background-color: white;
     align-items: center;
 }
-
-.float-container {
-    border-block-color: red;
-    padding: 20px;
-}
-
-.float-child {
-    border-block-color: red;
-    width: 50%;
-    float: left;
-    padding: 20px;
-    overflow: hidden;
-}
