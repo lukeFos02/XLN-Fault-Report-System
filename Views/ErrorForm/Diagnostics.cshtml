@@ -6,24 +6,37 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="~/css/site.css" />
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <button class="btn btn-danger" id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button><br />
+    <div class="diagnosticsButton">
+        <button class="btn btn-info" id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button>
+    </div>
+    <br />
 
-    <div id="myBar" style="height:24px;width:0%; background-color:green;"></div><br />
-    @using(Html.BeginForm("Diagnostics", "ErrorForm", FormMethod.Post))
+    <div id="myBar" style="height:24px;width:0%;">
+        <div id="myBarUnderlayer" style="height:24px;width:98%; display:none;"></div>
+    </div>
+    <br />
+    @using (Html.BeginForm("Diagnostics", "ErrorForm", FormMethod.Post))
     {
-        <label id="errorLabel"></label>
-        <hr/>
+        <div style="text-align: center;">
+            <label id="errorLabel" class="diagnosticsHeading"></label>
+        </div>
+        <hr />
         <input type="hidden" id="DiagnosticsPageLink" name="diagnostictest">
-        <input type="submit" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()" />
+        <div class="diagnosticsButton">
+            <button type="submit" class="btn btn-primary" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()">Next</button>
+        </div>
     }
 </body>
 </html>
 
 <script>
+
     function moveProgressBar() {
+        document.getElementById("myBarUnderlayer").style.display = 'block';
         var progress = document.getElementById("myBar");
         var width = 20;
         var id = setInterval(frame, 10);

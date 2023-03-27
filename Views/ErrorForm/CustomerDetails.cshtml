@@ -7,41 +7,43 @@
     <html>
     <body>
         <div>
-            <h1>
-                Before Proceeding To Report Your Fault We Need Some Contact Details
-            </h1>
-            <div>
-                <p>
-                    <label>Contact Name<strong>*</strong><br />   @Html.TextBox("contactname", "", new {id="contactName", required="required"})</label>
-                </p>
-                <p>
-                    <p>
-                        @ViewBag.ContactNumber
-                    </p>
-                    <label>Contact Number<strong>*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required", @placeholder = "e.g. 07XXX XXXXXX"})</label>
+            <div class="lineHeading">
+                Fill In Your Contact Details
+            </div>
+            <div class="input-group">
+                <div class="contactNameInput">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Name<strong style="color:red;">*</strong><br />@Html.TextBox("contactname", "", new {id="contactName", required="required", @class="form-control"})</label>
+                </div>
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Number<strong style="color:red;">*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required",@class="form-control", @placeholder = "e.g. 07XXX XXXXXX"})</label>
+
+            </div>
+            <div class="alignMobileText" style="color:red;">
+                @ViewBag.ContactNumber
+            </div>
+            <!--<small class="form-text text-muted alignMobileText">A Mobile phone from the UK has 11 digits and starts with 07</small>-->
+            <div class="alignTitleForHours diagnosticsHeading">
+                Business Contact Hours
+            </div>
+
+            <div class="input-group">
+
+                <div class="hoursFromInput">
+                    <label>From<strong style="color:red;">*</strong> @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}, @class="form-control"})</label>
+                </div>
+
+                <label>To<strong style="color:red;">*</strong> &nbsp;&nbsp;&nbsp;&nbsp; @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}, @class="form-control"})</label>
+                <p style="color:red;">
+                    @ViewBag.ContactHours
                 </p>
             </div>
-            <div>
-                <p>
-                    Business Contact Hours
-                </p>
-                <p>
-                    <p>
-                        @ViewBag.ContactHours
-                    </p>
-                    <label>From<strong>*</strong> @Html.Editor("contacthoursfrom", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
-                </p>
-                <p>
-                    <label>To<strong>*</strong> &nbsp;&nbsp;&nbsp;&nbsp; @Html.Editor("contacthoursto", new { htmlAttributes = new{ type = "time" , min = "09:00:00", max = "17:00:00"}})</label>
-                </p>
-                <p>
-                    Do you wish to proceed with reporting this fault?
-                </p>
-                <p>
-                    <input type="submit" name="Next" class="btn btn-primary" value="Yes">
-                    <button type="submit" name="Cancel" class="btn btn-danger" value="No" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">No</button>
-                </p>
+            <div class="hoursFromInput">
+                Do you wish to proceed with reporting this fault?
             </div>
+            <div class="buttonAlign">
+                <input type="submit" name="Next" class="btn btn-primary" value="Yes">
+                <button type="submit" name="Cancel" class="btn btn-secondary" value="No" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">No</button>
+            </div>
+
         </div>
     </body>
     </html>

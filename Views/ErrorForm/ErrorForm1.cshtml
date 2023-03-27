@@ -4,12 +4,10 @@
 @using (Html.BeginForm("ErrorForm1", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateCheckBoxes()" }))
 {
     <html>
-    <head>
-        <link rel="stylesheet" href="~/css/ErrorForm1.css" />
-    </head>
     <body>
-
-        <h1 class="lineHeading">Select Incident Type</h1>
+        <div class="lineheadingdiv">
+            <h1 class="lineHeading">Select Incident Type</h1>
+        </div>
         <div class="form-check checkboxesCentered">
             <label class="form-check-label">Phone @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
 

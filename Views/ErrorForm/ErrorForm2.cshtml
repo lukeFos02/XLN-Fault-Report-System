@@ -5,9 +5,6 @@
     string[] optionslist = options.Split(",");
     optionslist = optionslist.Where(s => s != optionslist[0]).ToArray();
 }
-<head>
-    <link rel="stylesheet" href="~/css/errorform2.css" asp-append-version="true" />
-</head>
 @using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDescription()" }))
 {
     <div class="checkboxcontainer">
@@ -50,6 +47,7 @@
                 <br />
                 <br />
                 <br />
+                <br />
             }
         </div>
     </div>
@@ -76,7 +74,7 @@
     </div>
     <div class="buttons">
         <button type="submit" class="btn btn-primary" name="Next">Next</button>
-        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return</button>
+        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("ErrorForm1","ErrorForm")';return false;''">Back</button>
     </div>
 
 }

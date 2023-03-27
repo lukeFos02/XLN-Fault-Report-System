@@ -4,17 +4,29 @@
 @using (Html.BeginForm("ErrorForm3", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateForm()" }))
 {
     <div>
-        <strong><label>Is the error intermittent?</label></strong>
-        <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", required = "required"})</label>
-        <labe>No @Html.RadioButton("intermittent", "no")</labe>
+        <div class="errorintermittentq">
+            <strong><label>Is the error intermittent?</label></strong>
+        </div>
+        <div class="errorintermittentcheckbox">
+            <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", required = "required"})</label>
+            <label>No @Html.RadioButton("intermittent", "no")</label>
+        </div>
     </div>
     <div>
-        <label>Can you state the pattern of the errors?</label>
-        @Html.TextArea("intermittentdescription", new {id="intermittentdescription", maxlength = 250})
+        <div class="textareaq">
+            <label>Can you state the pattern of the errors?</label>
+        </div>
+        <div class="intermittentteaxtarea">
+            @Html.TextArea("intermittentdescription", new {id="intermittentdescription", required="required", onkeyup="countChars(this);", cols="70", rows="7"})
+        </div>
     </div>
-    <div>
+    <p id="characterLimit"></p>
+    <div style="display:none;" id="limitAlert" role="alert">
+        <p style="color:red;">The character limit for the description is 250, please do not go over it</p>
+    </div>
+    <div class="buttons">
         <button type="submit" class="btn btn-primary" name="Next">Next</button>
-        <button type="submit" name="Cancel" class="btn btn-danger" value="Cancel Error" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Cancel Error</button>
+        <button type="submit" name="Cancel" class="btn btn-secondary" value="Cancel Error" onclick="location.href='@Url.Action("ErrorForm2","ErrorForm")';return false;''">Back</button>
     </div>
 }
 
@@ -26,6 +38,12 @@
         }
         else {
             return true;
+        }
+    }
+    function countChars(obj) {
+        document.getElementById("characterLimit").innerHTML = obj.value.length + ' /250 Characters';
+        if (obj.value.length > 250) {
+            document.getElementById("characterLimit").innerHTML = '<span style="color: red;">' + obj.value.length + ' out of the 250 characters limit</span>';
         }
     }
 </script>

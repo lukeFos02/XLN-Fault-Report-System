@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -156,4 +156,305 @@ label {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     background-color: white;
     align-items: center;
+}
+
+/*ErrorForm1*/
+
+@import url('errorform1.css');
+
+.lineHeading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: #2596be;
+    height: 75px;
+    text-align: center;
+    margin: 0, 0, 0, 0;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.checkboxesCentered {
+    text-align: center;
+}
+
+.lineheadingdiv {
+    padding-bottom: 8%;
+}
+
+.form-check-label{
+    font-size: 20px;
+    padding-bottom:8%;
+}
+
+/*ErrorForm2*/
+
+﻿.float-container {
+    border-block-color: red;
+    padding: 20px;
+    width: 100%;
+}
+
+.float-child {
+    border-block-color: red;
+    width: 50%;
+    padding: 20px;
+    overflow: hidden;
+    position: center;
+    border-bottom: solid;
+    border-bottom-color: #2596be;
+    border-top: solid;
+    float: left;
+    border-top-color: #2596be;
+}
+
+.display-6 {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    color: #2596be;
+}
+
+.othererrorsq {
+    text-align: center;
+    font-weight: bold;
+}
+
+.othererrorsql {
+    padding-top: 2% !important;
+}
+
+.othererrorsqcheckbox {
+    text-align: center;
+}
+
+.errordetails {
+    text-align: center;
+    padding-top: 1%;
+}
+
+.form-group {
+    text-align: center;
+}
+
+#errordescription {
+    width: 40%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #2596be;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 12px;
+    resize: none;
+}
+
+#characterLimit {
+    text-align: center;
+    font-size: 11px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.checkboxcontainer {
+    min-width: 100%;
+}
+
+/*ErrorForm3*/
+
+.errorintermittentq {
+    text-align: center;
+    font-size: 30px;
+    color: #2596be;
+    padding-top: 5%;
+    padding-bottom: 1%;
+}
+
+.errorintermittentcheckbox {
+    text-align: center;
+    font-size: 16px;
+}
+
+.textareaq {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 2%;
+}
+
+#intermittentdescription {
+    width: 40%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #2596be;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 12px;
+    resize: none;
+}
+
+.intermittentteaxtarea {
+    text-align: center;
+}
+
+#characterLimit {
+    text-align: center;
+    font-size: 11px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.checkboxcontainer {
+    min-width: 100%;
+}
+
+#limitAlert {
+    text-align: center;
+}
+
+/*NumbersPage*/
+
+.lineHeadingNumbersPage {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: #2596be;
+    height: 75px;
+    text-align: center;
+    margin: 0, 0, 0, 0;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.numbersContainer {
+    width: 1200px;
+    overflow: hidden;
+}
+
+.phoneNumber {
+    text-align: center;
+    color: #2596be;
+}
+
+.numberBox {
+    float: left;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    width: 300px;
+    margin: 20px;
+    margin-left: 150px;
+    padding: 20px;
+    align-items: center;
+}
+
+.historyBox {
+    float: left;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    width: 550px;
+    margin: 20px;
+    padding: 20px;
+    align-items: center;
+}
+
+/*Diagnostics Page*/
+
+#myBar {
+    height: 20px;
+    background: #1da1f2;
+    box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
+    border-radius: 50px;
+    transition: all 0.5s;
+}
+
+#myBarUnderlayer {
+    position: absolute;
+    height: 20px;
+    border-radius: 50px;
+    border-style: solid;
+    border-block-color: black;
+}
+
+.diagnosticsButton {
+    text-align: center;
+}
+
+.diagnosticsHeading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 75px;
+    margin: 0, 0, 0, 0;
+    font-size: 30px;
+    padding: 10px;
+}
+
+/*WarningPage*/
+
+.display-5 {
+    font-weight: bolder;
+    padding-bottom: 2%;
+    color: #2596be;
+}
+
+.btlink {
+    font-style: italic;
+    text-decoration: none;
+}
+
+.warningmessage{
+    text-align:center;
+    font-size: 21px;
+    font-weight: 300;
+}
+
+.ticklabel{
+    color: #2596be;
+    text-align:center;
+}
+
+.chargesmessage{
+    text-align:center;
+    font-size: 26px;
+}
+
+.buttons{
+    text-align: center;
+    margin: auto;
+}
+
+#WarningPageLinnk{
+    margin-left: auto;
+}
+
+/*Customer Details*/
+
+.contactNameInput {
+    margin-left: 315px;
+}
+
+.hoursFromInput {
+    margin-left: 30%;
+}
+
+.alignMobileText {
+    margin-left: 50%;
+}
+
+.buttonAlign {
+    margin-left: 45%;
+    margin-right: 10px;
+}
+
+.alignTitleForHours {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 10px;
+    font-size: 20px;
+    margin-left: 40%;
 }
