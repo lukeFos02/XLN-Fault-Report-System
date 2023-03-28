@@ -6,8 +6,8 @@ using XLN_Fault_Report_System.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("connectionstr");
-builder.Services.AddDbContext<Dbcontext>(conn => conn.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("SQLCONNSTR_DefaultConnection");
+builder.Services.AddDbContext<Dbcontext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IServices, Services>();
 
