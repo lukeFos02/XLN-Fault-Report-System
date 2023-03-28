@@ -133,6 +133,11 @@ namespace XLN_Fault_Report_System.Controllers
                     ViewBag.ContactHours = String.Format("Please ensure that the value of the hours is from lower to higher");
                     return View();
                 }
+                else if (int.Parse(hoursToLastTwo) - int.Parse(lastTwoNumbers) < 30)
+                {
+                    ViewBag.ContactHours = String.Format("Please make sure to leave at least 30 minuets for our engineers");
+                    return View();
+                }
             }
 
             _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
