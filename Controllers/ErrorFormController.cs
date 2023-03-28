@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -162,7 +163,7 @@ namespace XLN_Fault_Report_System.Controllers
                 fault.IntermittentStatus = _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
                 fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
                 fault.DiagnosticResult = _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
-                fault.Time = DateTime.Now.ToString();
+                fault.Time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 fault.Status = "Fault report pending";
 
                 _service.SaveFault(fault);
