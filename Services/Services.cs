@@ -63,7 +63,7 @@ namespace XLN_Fault_Report_System.Services
 		}
 		public void UpdateFaultStatus(List<Fault> faults)
 		{
-			DateTime now = DateTime.Now.ToString("dd/MM/yyyy HH,mm,ss");
+			DateTime now = DateTime.Now.ToString("dd/MM/yyyy HH,mm,ss", CultureInfo.InvariantCulture);
 
 			foreach (Fault f in faults)
 			{
