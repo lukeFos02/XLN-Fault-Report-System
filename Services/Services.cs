@@ -63,13 +63,13 @@ namespace XLN_Fault_Report_System.Services
 		}
 		public void UpdateFaultStatus(List<Fault> faults)
 		{
-			String now = DateTime.Now.ToString("dd/MM/yyyy HH,mm,ss", CultureInfo.InvariantCulture);
+			String now = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
 			foreach (Fault f in faults)
 			{
 				var fault = _context.Faults.Where(a => a.FaultId == f.FaultId).FirstOrDefault();	
-				DateTime faultSubmitDate = DateTime.ParseExact(f.Time, "dd/MM/yyyy HH,mm,ss", CultureInfo.InvariantCulture);
-				DateTime currentTime = DateTime.ParseExact(now, "dd/MM/yyyy HH,mm,ss", CultureInfo.InvariantCulture);
+				DateTime faultSubmitDate = DateTime.ParseExact(f.Time, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+				DateTime currentTime = DateTime.ParseExact(now, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 				TimeSpan diff = currentTime - faultSubmitDate;	
 				if (diff.Minutes > 15 && fault.Status == "Fault report pending")
 				{
