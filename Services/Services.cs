@@ -71,7 +71,7 @@ namespace XLN_Fault_Report_System.Services
 				TimeSpan diff = now - faultSubmitDate;	
 				if (diff.Minutes > 15 && fault.Status == "Fault report pending")
 				{
-					fault.Status = "Fault in progess";
+					fault.Status = "Fault in progress";
 				}
 			}
 			_context.SaveChanges();
