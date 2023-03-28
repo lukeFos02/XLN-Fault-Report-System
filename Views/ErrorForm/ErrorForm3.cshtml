@@ -8,34 +8,69 @@
             <strong><label>Is the error intermittent?</label></strong>
         </div>
         <div class="errorintermittentcheckbox">
-            <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", required = "required"})</label>
-            <label>No @Html.RadioButton("intermittent", "no")</label>
+            <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", @onchange="yesSelected()"})</label>
+            <label>No @Html.RadioButton("intermittent", "no", new{id="NoIntermittentError", @onchange="noSelected()"})</label>
         </div>
     </div>
     <div>
-        <div class="textareaq">
+        <div class="textareaq" id="intermittentLabel" style="display:none;">
             <label>Can you state the pattern of the errors?</label>
         </div>
-        <div class="intermittentteaxtarea">
-            @Html.TextArea("intermittentdescription", new {id="intermittentdescription", required="required", onkeyup="countChars(this);", cols="70", rows="7"})
+        <div id="intermittentteaxtarea" style="display:none;">
+            @Html.TextArea("intermittentdescription", new {id="intermittentdescription",onkeyup="countChars(this);", cols="70", rows="7"})
         </div>
     </div>
     <p id="characterLimit"></p>
     <div style="display:none;" id="limitAlert" role="alert">
-        <p style="color:red;">The character limit for the description is 250, please do not go over it</p>
+        <p style="color:red;">The character limit for the description is 250, Please do not go over it</p>
+    </div>
+    <div style="display:none;" id="noOptionSelected" role="alert">
+        <p style="color:red;">Please select one of the options before proceeding</p>
     </div>
     <div class="buttons">
-        <button type="submit" class="btn btn-primary" name="Next">Next</button>
+        <button type="submit" class="btn btn-info" name="Next">Next</button>
         <button type="submit" name="Cancel" class="btn btn-secondary" value="Cancel Error" onclick="location.href='@Url.Action("ErrorForm2","ErrorForm")';return false;''">Back</button>
     </div>
 }
 
 <script type="text/javascript">
+    function yesSelected() {
+        if (document.getElementById("intermittentError").checked) {
+            document.getElementById("intermittentteaxtarea").style.display = 'inline';
+            document.getElementById("intermittentLabel").style.display = "block";
+            document.getElementById("intermittentteaxtarea").style.marginLeft = '31%';
+            document.getElementById("characterLimit").style.display = 'block';
+        }
+    }
+    function noSelected() {
+        if (document.getElementById("NoIntermittentError").checked) {
+            document.getElementById("intermittentteaxtarea").style.display = 'none';
+            document.getElementById("intermittentLabel").style.display = "none";
+            document.getElementById("characterLimit").style.display = 'none';
+            document.getElementById("intermittentdescription").required = false;
+        }
+    }
+
     function validateForm() {
         if (document.getElementById("intermittentError").checked && document.getElementById("intermittentdescription").value == "") {
             document.getElementById("intermittentdescription").required = "required";
             return false;
         }
+
+        if (document.getElementById("intermittentdescription").value.length > 250 && document.getElementById("NoIntermittentError").checked) {
+            return true;
+        }
+        else if (document.getElementById("intermittentdescription").value.length > 250) {
+            document.getElementById("limitAlert").style.display = 'block';
+            return false;
+        }
+
+        if (document.getElementById("intermittentError").checked == false && document.getElementById("NoIntermittentError").checked == false) {
+            document.getElementById("noOptionSelected").style.display = 'block';
+            document.getElementById("noOptionSelected").style.marginLeft = '40%';
+            return false;
+        }
+
         else {
             return true;
         }

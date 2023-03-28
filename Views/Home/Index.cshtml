@@ -4,12 +4,14 @@
 
 <body>
     <div class="login">
-        <h1>Login to Web App</h1>
+        <h1 class="display-6">Login</h1>
 
         <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
-            <p><input type="text" name="username" value="" placeholder="Username" required></p>
-            <p><input type="password" name="passcode" value="" placeholder="Password" required></p>
-            <p class="submit"><input type="submit" name="commit" value="Login"></p>
+            <div class="fields">
+                <p><input class="logintextbox" type="text" name="username" value="" placeholder="Username" required></p>
+                <p><input class="logintextbox" type="password" name="passcode" value="" placeholder="Password" required></p>
+                <p class="submit"><input class="btn btn-primary" type="submit" name="commit" value="Login"></p>
+            </div>
             <hr />
             @ViewBag.username
         </form>

@@ -157,9 +157,19 @@ label {
     background-color: white;
     align-items: center;
 }
+/*Login Page*/
+
+.logintextbox{
+    border-color: #2596be;
+    vertical-align: middle;
+}
+
+.fields{
+    padding-top: 1%;
+    text-align: center;
+}
 
 /*ErrorForm1*/
-
 @import url('errorform1.css');
 
 .lineHeading {
@@ -259,6 +269,19 @@ label {
 
 .checkboxcontainer {
     min-width: 100%;
+}
+
+.float-child-alone {
+    border-block-color: red;
+    width: 50%;
+    padding: 20px;
+    overflow: hidden;
+    position: center;
+    border-bottom: solid;
+    border-bottom-color: #2596be;
+    border-top: solid;
+    margin-left: 25%;
+    border-top-color: #2596be;
 }
 
 /*ErrorForm3*/
@@ -436,7 +459,7 @@ label {
 /*Customer Details*/
 
 .contactNameInput {
-    margin-left: 315px;
+    margin-left: 25%;
 }
 
 .hoursFromInput {
@@ -457,4 +480,13 @@ label {
     margin: 10px;
     font-size: 20px;
     margin-left: 40%;
+}
+
+/*Fault Submitted*/
+
+.cancelmessage{
+    text-align: center;
+    font-weight: 500;
+    padding-top: 2%;
+    padding-bottom: 3%;
 }

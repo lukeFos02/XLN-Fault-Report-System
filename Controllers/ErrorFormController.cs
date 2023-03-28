@@ -143,49 +143,51 @@ namespace XLN_Fault_Report_System.Controllers
         {
             Fault fault = new Fault();
 
-            fault.UserId                        =             (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
-            fault.AssetId                       =       (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
-            fault.ContactName                   =             _contextAccessor.HttpContext.Session.GetString("ContactName");
-            fault.ContactNumber                 =           _contextAccessor.HttpContext.Session.GetString("ContactNumber");
-            fault.ContactHoursFrom              =        _contextAccessor.HttpContext.Session.GetString("ContactHoursFrom");
-            fault.ContactHoursTo                =          _contextAccessor.HttpContext.Session.GetString("ContactHoursTo");
-            fault.ServiceType                   =             _contextAccessor.HttpContext.Session.GetString("ServiceType");
-            fault.IncidentType                  =            _contextAccessor.HttpContext.Session.GetString("IncidentType");
-            fault.ErrorDescription              =        _contextAccessor.HttpContext.Session.GetString("ErrorDescription");
-            fault.IntermittentStatus            =      _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
-            fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
-            fault.DiagnosticResult              =        _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
-            fault.Time = DateTime.Now.ToString();
-            fault.Status = "Fault report pending";
-
-            string to = "hmssos385@gmail.com";
-            string from = "hmssos385@gmail.com";
-            MailMessage message = new MailMessage(from, to);
-
-            _service.SaveFault(fault);
-
-            Fault newFault = _service.GetNewFault(fault.AssetId);
-            _contextAccessor.HttpContext.Session.SetInt32("NewFaultID", newFault.FaultId);
-
-            string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
-                " You can talk with a member of our team using this phone number: 077730330";
-            message.Subject = "Error Confirmation";
-            message.Body = mailbody;
-            message.BodyEncoding = Encoding.UTF8;
-            message.IsBodyHtml = true;
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-            System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("hmssos385@gmail.com", "ufvnbchfpsdbsjxl");
-            client.EnableSsl = true;
-            client.UseDefaultCredentials = false;
-            client.Credentials = basicCredential1;
             try
             {
+                fault.UserId = (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
+                fault.AssetId = (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
+                fault.ContactName = _contextAccessor.HttpContext.Session.GetString("ContactName");
+                fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
+                fault.ContactHoursFrom = _contextAccessor.HttpContext.Session.GetString("ContactHoursFrom");
+                fault.ContactHoursTo = _contextAccessor.HttpContext.Session.GetString("ContactHoursTo");
+                fault.ServiceType = _contextAccessor.HttpContext.Session.GetString("ServiceType");
+                fault.IncidentType = _contextAccessor.HttpContext.Session.GetString("IncidentType");
+                fault.ErrorDescription = _contextAccessor.HttpContext.Session.GetString("ErrorDescription");
+                fault.IntermittentStatus = _contextAccessor.HttpContext.Session.GetString("IntermittentStatus");
+                fault.IntermittentStatusDescription = _contextAccessor.HttpContext.Session.GetString("IntermittentDescription");
+                fault.DiagnosticResult = _contextAccessor.HttpContext.Session.GetString("DiagnosticResult");
+                fault.Time = DateTime.Now.ToString();
+                fault.Status = "Fault report pending";
+
+                _service.SaveFault(fault);
+
+                Fault newFault = _service.GetNewFault(fault.AssetId);
+                _contextAccessor.HttpContext.Session.SetInt32("NewFaultID", newFault.FaultId);
+
+                string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
+                " You can talk with a member of our team using this phone number: 077730330";
+
+                string to = "hmssos385@gmail.com";
+                string from = "hmssos385@gmail.com";
+                MailMessage message = new MailMessage(from, to);
+
+                message.Subject = "Error Confirmation";
+                message.Body = mailbody;
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                System.Net.NetworkCredential basicCredential1 = new
+                System.Net.NetworkCredential("hmssos385@gmail.com", "ufvnbchfpsdbsjxl");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+
                 client.Send(message);
             }
             catch
             {
-
+                //add 'something went wrong page'
             }
 
             return View();

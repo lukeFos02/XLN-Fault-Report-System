@@ -1,10 +1,25 @@
 ﻿@inject IHttpContextAccessor contextAccessor;
 @{
     ViewData["Title"] = "Fault Submitted";
-    int faultID = (int)contextAccessor.HttpContext.Session.GetInt32("NewFaultID");
+    int faultID = 1;
+    try
+    {
+        faultID = (int)contextAccessor.HttpContext.Session.GetInt32("NewFaultID");
+    }
+    catch
+    {
+        
+    }
 }
 <p>
-    You have submitted your fault. If you wish to cancel your fault you may do so within 15 minutes to avoid any time related charges<br />
-    @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = faultID})
-    <button type="submit" name="Cancel" class="btn btn-danger" value="Return" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return To Landing Page</button>
+    <h1 class="display-6">
+        You have submitted your fault
+    </h1>
+    <div class="cancelmessage">
+        If you wish to cancel your fault you may do so within 15 minutes to avoid any time related charges<br />
+    </div>
+    <div class="buttons">
+        @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = faultID}, new {@class = "btn btn-danger"})
+        <button type="submit" name="Cancel" class="btn btn-secondary" value="Return" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return To Landing Page</button>
+    </div>
 </p>
