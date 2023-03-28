@@ -1,12 +1,13 @@
-﻿
-@model XLN_Fault_Report_System.Models.Asset
+﻿@model XLN_Fault_Report_System.Models.Asset
 @{
     ViewData["Title"] = "Your Numbers";
     User user = TempData["User"] as User;
     List<Asset> assets = TempData["UsersAssets"] as List<Asset>;
+    int reportButtonAvailable = 0;
 }
 <html>
 <head>
+    <link rel="stylesheet" href="~/css/NumbersPage.css" />
     <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel =”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
 </head>
 <body>
@@ -20,7 +21,25 @@
                         <div class="phoneNumber">
                             @a.Number <input type="hidden" asp-for="AssetId" value="@a.AssetId" />
                         </div>
-                        <button type="submit" class="btn btn-info" style="color:white;">Report Fault</button>
+                        @if (a.Faults != null)
+                        {
+                            @for (int i = 0; i < a.Faults.Count; i++)
+                            {
+                                @if (a.Faults[i].Status == "Fault in progress")
+                                {
+                                    reportButtonAvailable += 1;
+                                }
+                            }
+                        }
+                        @if (reportButtonAvailable == 0)
+                        {
+                            <button id="reportButton" type="submit" class="btn btn-info" style="color:white;">Report Fault</button>
+                        }
+                        else
+                        {
+                            <button id="reportButton" disabled type="submit" class="btn btn-secondary" style="color:white;">Fault In Progress</button>
+                            reportButtonAvailable = 0;
+                        }
                     </div>
                 </form>
                 <div class="historyBox">
