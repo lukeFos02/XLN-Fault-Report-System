@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace XLN_Fault_Report_System.Services
 {
@@ -67,7 +68,7 @@ namespace XLN_Fault_Report_System.Services
 			foreach (Fault f in faults)
 			{
 				var fault = _context.Faults.Where(a => a.FaultId == f.FaultId).FirstOrDefault();	
-				DateTime faultSubmitDate = DateTime.Parse(f.Time);
+				DateTime faultSubmitDate = DateTime.Parse(f.Time, CultureInfo.InvariantCulture);
 				TimeSpan diff = now - faultSubmitDate;	
 				if (diff.Minutes > 15 && fault.Status == "Fault report pending")
 				{
