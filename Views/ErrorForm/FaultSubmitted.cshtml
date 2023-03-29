@@ -13,13 +13,13 @@
 }
 <p>
     <h1 class="display-6">
-        You have submitted your fault
+        You Have Submitted Your Fault
     </h1>
     <div class="cancelmessage">
         If you wish to cancel your fault you may do so within 15 minutes to avoid any time related charges<br />
     </div>
     <div class="buttons">
         @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = faultID}, new {@class = "btn btn-danger"})
-        <button type="submit" name="Cancel" class="btn btn-secondary" value="Return" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return To Landing Page</button>
+        <button type="submit" name="Cancel" class="btn btn-primary" value="Return" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">Return To Landing Page</button>
     </div>
 </p>

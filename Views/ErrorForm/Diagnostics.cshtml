@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
+     <div class="faultprogress">
+         4/6
+     </div>
     <div class="diagnosticsButton">
         <button class="btn btn-info" id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button>
     </div>    <br />
 
     <div id="myBar" style="height:24px;width:0%;">
-    <div id="myBarUnderlayer" style="height:24px;width:98%; display:none;"></div>
+    <div id="myBarUnderlayer" style="height:24px;width:98.5%; display:none;"></div>
     </div>
     <br />
     @using (Html.BeginForm("Diagnostics", "ErrorForm", FormMethod.Post))
@@ -25,8 +28,8 @@
         <hr />
         <input type="hidden" id="DiagnosticsPageLink" name="diagnostictest">
         <div class="diagnosticsButton">
-        <button type="submit" class="btn btn-info" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()">Next</Button>
         <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm3","ErrorForm")';return false;''">Back</button>
+        <button type="submit" class="btn btn-info" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()">Next</Button>
         </div>
     }
 </body>

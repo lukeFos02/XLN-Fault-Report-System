@@ -18,13 +18,16 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
+    <div class="faultprogress">
+        5/6
+    </div>
     <div class="text-center">
         <h1 class="display-5">Please Read the Following Information Carefully</h1>
     </div>
     <div class="warningmessage">
         Can you confirm that you have checked any equipment plugged into the master socket? <br /><br />
         This includes trying another handset and removing any filters, extension cables and any other 3rd party equipment.<br />
-        (Please see <a class="btlink" href="https://help.business.bt.com/app/answers/detail/a_id/45454/~/i-have-a-fault-on-my-phone-line.-how-do-i-test-my-equipment-or-wiring">guides</a> for support on how to check this)<br /><br />
+        (Please see <a class="btlink" href="https://help.business.bt.com/app/answers/detail/a_id/45454/~/i-have-a-fault-on-my-phone-line.-how-do-i-test-my-equipment-or-wiring" target="_blank">guides</a> for support on how to check this)<br /><br />
     </div>
     <div class="chargesmessage">
         <strong>
@@ -36,8 +39,8 @@
         <input onclick="DisplayLink()" type="checkbox" id="seen" name="seenWarning" required /><br />
     </div>
     <div class="buttons">   
-        <button class="btn btn-primary" style="display:none;" id="WarningPageLink" onclick="location.href='@Url.Action("CustomerDetails", "ErrorForm")';return false;">Next</button>
         <button class="btn btn-secondary" id="WarningPageLink" onclick="location.href='@Url.Action("ErrorForm3", "ErrorForm", HttpMethod.Post)';return false;">Back</button>
+        <button class="btn btn-info" style="display:none;" id="WarningPageLinkSubmit" onclick="location.href='@Url.Action("CustomerDetails", "ErrorForm")';return false;">Next</button>
     </div>
 </body>
 </html>
@@ -47,12 +50,12 @@
         var displayCheckBox = document.getElementById("seen");
         displayCheckBox.addEventListener("change", () => {
             if (displayCheckBox.checked) {
-                document.getElementById("WarningPageLink").style.display='inline';
+                document.getElementById("WarningPageLinkSubmit").style.display='inline';
             } else {
-                document.getElementById("WarningPageLink").style.display = 'none';
+                document.getElementById("WarningPageLinkSubmit").style.display = 'none';
             }
         });
-        var warningPageButton = document.getElementById("WarningPageLink");
+        var warningPageButton = document.getElementById("WarningPageLinkSubmit");
         if(document.getElementById("seen").checked)
         warningPageButton.style.display = 'inline';
     }

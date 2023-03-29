@@ -5,21 +5,24 @@
 {
     <html>
     <body>
-        <div class="lineheadingdiv">
-            <h1 class="lineHeading">Select Incident Type</h1>
+        <div class="faultprogress">
+            1/6
         </div>
-        <div class="form-check checkboxesCentered">
-            <label class="form-check-label">Phone @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
-
-            <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
+        <div>
+            <h1 class="display-6">Select Incident Type</h1>
+        </div>
+        <div style="padding-top: 5%">
+            <div class="form-check checkboxesCentered">
+                <label class="form-check-label">Phone @Html.CheckBox("cli", new {id="cliCheckbox"})</label>
+                <label class="form-check-label">Broadband @Html.CheckBox("bb", new{id="bbCheckbox"})</label>
             <div style="display:none;" id="checkBoxAlert" role="alert">
-                <p class="alert">&nbsp;&nbsp;Please select an Error Type</p>
+                <p class="alert" style="color: red">&nbsp;&nbsp;Please select a Fault Type</p>
             </div>
-
+        </div>
         </div>
         <div class="checkboxesCentered">
-            <button type="submit" class="btn btn-info" name="Next">Next</button>
             <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("NumbersPage","LandingPage")';return false;''">Back</button>
+            <button type="submit" class="btn btn-info" name="Next">Next</button>
         </div>
     </body>
     </html>

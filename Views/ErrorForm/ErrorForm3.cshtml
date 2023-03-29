@@ -3,9 +3,12 @@
 }
 @using (Html.BeginForm("ErrorForm3", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateForm()" }))
 {
+    <div class="faultprogress">
+        3/6
+    </div>
     <div>
         <div class="errorintermittentq">
-            <strong><label>Is the error intermittent?</label></strong>
+            <strong><label>Is The Fault Intermittent?</label></strong>
         </div>
         <div class="errorintermittentcheckbox">
             <label>Yes @Html.RadioButton("intermittent", "yes", new {id="intermittentError", @onchange="yesSelected()"})</label>
@@ -14,7 +17,7 @@
     </div>
     <div>
         <div class="textareaq" id="intermittentLabel" style="display:none;">
-            <label>Can you state the pattern of the errors?</label>
+            <label>Can you state the pattern of the fault?</label>
         </div>
         <div id="intermittentteaxtarea" style="display:none;">
             @Html.TextArea("intermittentdescription", new {id="intermittentdescription",onkeyup="countChars(this);", cols="70", rows="7"})
@@ -28,8 +31,8 @@
         <p style="color:red;">Please select one of the options before proceeding</p>
     </div>
     <div class="buttons">
-        <button type="submit" class="btn btn-info" name="Next">Next</button>
         <button type="submit" name="Cancel" class="btn btn-secondary" value="Cancel Error" onclick="location.href='@Url.Action("ErrorForm2","ErrorForm")';return false;''">Back</button>
+        <button type="submit" class="btn btn-info" name="Next">Next</button>
     </div>
 }
 

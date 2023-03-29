@@ -38,6 +38,10 @@ body {
     text-align: center;
 }
 
+.username{
+    font-weight:300;
+}
+
 .boxesContainer {
     background-color: lightgrey;
     color: aqua;
@@ -104,9 +108,14 @@ label {
     overflow: hidden;
 }
 
-/*Login Page*/
+.faultprogress{
+    font-size: 14px;
+    text-align:right;
+    color:#2596be;
+}
 
-.logintextbox{
+/*Login Page*/
+.logintextbox {
     border-color: #2596be;
     vertical-align: middle;
 }

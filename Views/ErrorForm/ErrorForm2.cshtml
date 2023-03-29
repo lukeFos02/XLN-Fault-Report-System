@@ -10,10 +10,13 @@
 </head>
 @using (Html.BeginForm("ErrorForm2", "ErrorForm", FormMethod.Post, new { onsubmit = "return validateDescription()" }))
 {
+    <div class="faultprogress">
+        2/6
+    </div>
     <div class="checkboxcontainer">
         <div class="float-container">
             <div class="text-left">
-                <h1 class="display-6">Please Fill in the Error Details</h1>
+                <h1 class="display-6">Please Fill in the Fault Details</h1>
             </div>
             @if (optionslist.Count() > 1)
             {
@@ -71,7 +74,7 @@
     <p>
         <div id="errorSelectionContainer">
             <div class="othererrorsq">
-                <label class="othererrorsql">Do you have any others errors?</label>
+                <label class="othererrorsql">Other</label>
             </div>
             <div class="othererrorsqcheckbox">
                 <label name="otherErrors">Yes @Html.RadioButton("otherErrors", "yes", new {id="otherErrorExist", @onchange="yesSelected()"})</label>
@@ -80,7 +83,7 @@
         </div>
     </p>
     <div class="errordetails" id="errorDetailsLabel" style="display:none;">
-        <label for="errordescription">Write some details for your error below</label>
+        <label for="errordescription">Write some details for your fault below</label>
 
         <div class="form-group" id="errorDetailsBox" style="display:none;">
             @Html.TextArea("errordescription", htmlAttributes:new{id = "errordescription", onkeyup="countChars(this);", cols="70", rows="7"})
@@ -94,9 +97,9 @@
         <p style="color:red;">Please select one of the options before proceeding</p>
     </div>
     <div class="buttons">
-        <button type="submit" class="btn btn-info" name="Next">Next</button>
-        <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm1","ErrorForm")';return false;''">Back</button>
-    </div>
+       <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm1","ErrorForm")';return false;''">Back</button>
+       <button type="submit" class="btn btn-info" name="Next">Next</button>
+   </div>
 
 }
 

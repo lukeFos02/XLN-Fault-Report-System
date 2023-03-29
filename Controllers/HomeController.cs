@@ -38,6 +38,12 @@ namespace XLN_Fault_Report_System.Controllers
 				return View();
 			}
 		}
+		public IActionResult Logout()
+		{
+			_contextAccessor.HttpContext.Session.Remove("Username");
+			_contextAccessor.HttpContext.Session.Remove("Password");
+			return RedirectToAction("Index");
+		}
 
 		public IActionResult Privacy()
 		{

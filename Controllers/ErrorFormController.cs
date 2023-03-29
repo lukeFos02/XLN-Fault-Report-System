@@ -93,23 +93,30 @@ namespace XLN_Fault_Report_System.Controllers
         public IActionResult CustomerDetails(string contactname, string contactnumber, string contacthoursfrom, string contacthoursto)
         {
             _contextAccessor.HttpContext.Session.SetString("ContactName", contactname);
-            contactnumber = contactnumber.Replace(" ", "");
-            if (contactnumber[0] == '0' && contactnumber[1] == '7' && contactnumber.Length == 11)
+            if (contactnumber != null)
             {
-                foreach(char c in contactnumber)
+                contactnumber = contactnumber.Replace(" ", "");
+                if (contactnumber[0] == '0' && contactnumber[1] == '7' && contactnumber.Length == 11)
                 {
-                    if (c < '0' || c > '9')
+                    foreach (char c in contactnumber)
                     {
-                        ViewBag.ContactNumber = String.Format("Please enter a valid phone number");
-                        return View();
+                        if (c < '0' || c > '9')
+                        {
+                            ViewBag.ContactNumber = String.Format("A Mobile phone from the UK has 11 digits and starts with 07");
+                            return View();
+                        }
                     }
+                    _contextAccessor.HttpContext.Session.SetString("ContactNumber", contactnumber);
                 }
-                _contextAccessor.HttpContext.Session.SetString("ContactNumber", contactnumber);
+                else
+                {
+                    ViewBag.ContactNumber = String.Format("A Mobile phone from the UK has 11 digits and starts with 07");
+                    return View();
+                }
             }
             else
             {
-                ViewBag.ContactNumber = String.Format("Please enter a valid phone number");
-                return View();
+                _contextAccessor.HttpContext.Session.SetString("ContactNumber", "");
             }
             if (contacthoursfrom == null || contacthoursto == null)
             {
@@ -163,7 +170,14 @@ namespace XLN_Fault_Report_System.Controllers
                 fault.UserId = (int)_contextAccessor.HttpContext.Session.GetInt32("UsersID");
                 fault.AssetId = (int)_contextAccessor.HttpContext.Session.GetInt32("ChosenAssetId");
                 fault.ContactName = _contextAccessor.HttpContext.Session.GetString("ContactName");
-                fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
+                if (_contextAccessor.HttpContext.Session.GetString("ContactNumber") != "")
+                {
+                    fault.ContactNumber = _contextAccessor.HttpContext.Session.GetString("ContactNumber");
+                }
+                else
+                {
+                    fault.ContactNumber = "";
+                }
                 fault.ContactHoursFrom = _contextAccessor.HttpContext.Session.GetString("ContactHoursFrom");
                 fault.ContactHoursTo = _contextAccessor.HttpContext.Session.GetString("ContactHoursTo");
                 fault.ServiceType = _contextAccessor.HttpContext.Session.GetString("ServiceType");
@@ -180,29 +194,37 @@ namespace XLN_Fault_Report_System.Controllers
                 Fault newFault = _service.GetNewFault(fault.AssetId);
                 _contextAccessor.HttpContext.Session.SetInt32("NewFaultID", newFault.FaultId);
 
-                string mailbody = "Your error has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
-                " You can talk with a member of our team using this phone number: 077730330";
+                try
+                {
+                    string mailbody = "Your fault has been successfully logged into the system\nThis is the ID for your error: " + newFault.FaultId +
+                    " You can talk with a member of our team using this phone number: 077730330";
 
-                string to = "hmssos385@gmail.com";
-                string from = "hmssos385@gmail.com";
-                MailMessage message = new MailMessage(from, to);
+                    string to = "xlnmockup@gmail.com";
+                    string from = "xlnmockup@gmail.com";
+                    MailMessage message = new MailMessage(from, to);
 
-                message.Subject = "Error Confirmation";
-                message.Body = mailbody;
-                message.BodyEncoding = Encoding.UTF8;
-                message.IsBodyHtml = true;
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-                System.Net.NetworkCredential basicCredential1 = new
-                System.Net.NetworkCredential("hmssos385@gmail.com", "ufvnbchfpsdbsjxl");
-                client.EnableSsl = true;
-                client.UseDefaultCredentials = false;
-                client.Credentials = basicCredential1;
+                    message.Subject = "Fault Confirmation";
+                    message.Body = mailbody;
+                    message.BodyEncoding = Encoding.UTF8;
+                    message.IsBodyHtml = true;
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    System.Net.NetworkCredential basicCredential1 = new
+                    System.Net.NetworkCredential("xlnmockup@gmail.com", "corowpedmuhejlyu");
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = basicCredential1;
 
-                client.Send(message);
+                    client.Send(message);
+                }
+                catch
+                {
+                    //emailing system error
+                }
             }
             catch
             {
                 //add 'something went wrong page'
+                return RedirectToAction("Index", "Home");
             }
 
             return View();

@@ -7,6 +7,9 @@
     <html>
     <body>
         <div>
+            <div class="faultprogress">
+                6/6
+            </div>
             <div class="lineHeading">
                 Fill In Your Contact Details
             </div>
@@ -14,13 +17,12 @@
                 <div class="contactNameInput">
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Name<strong style="color:red;">*</strong><br />@Html.TextBox("contactname", "", new {id="contactName", required="required", @class="form-control"})</label>
                 </div>
-                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Number<strong style="color:red;">*</strong><br /> @Html.TextBox("contactnumber", "", new{id="contactNumber", required="required",@class="form-control", @placeholder = "07XXX XXXXXX"})</label>
-
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Number<br /> @Html.TextBox("contactnumber", "", new{id="contactNumber",@class="form-control", @placeholder = "07XXX XXXXXX"})</label>
             </div>
             <div class="alignMobileText" style="color:red;">
                 @ViewBag.ContactNumber
             </div>
-            <!--<small class="form-text text-muted alignMobileText">A Mobile phone from the UK has 11 digits and starts with 07</small>-->
+            <small class="form-text text-muted alignMobileText">Adding a contact number can take up to 2 hours to take effect</small>
             <div class="alignTitleForHours diagnosticsHeading">
                 Business Contact Hours
             </div>
@@ -40,8 +42,8 @@
                 Do you wish to proceed with reporting this fault?
             </div>
             <div class="buttonAlign">
-                <input type="submit" name="Next" class="btn btn-primary" value="Yes">
                 <button type="submit" name="Cancel" class="btn btn-secondary" value="No" onclick="location.href='@Url.Action("Index","LandingPage")';return false;''">No</button>
+                <input type="submit" name="Next" class="btn btn-info" value="Yes">
             </div>
 
         </div>

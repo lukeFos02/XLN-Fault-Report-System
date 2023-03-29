@@ -15,7 +15,7 @@ namespace XLN_Fault_Report_System.Models
         [Required]
         public string ContactName { get; set; }
         [Required]
-        public string ContactNumber { get; set; }
+        public string? ContactNumber { get; set; }
         [Required]
         public string ContactHoursFrom { get; set; }
         [Required]
