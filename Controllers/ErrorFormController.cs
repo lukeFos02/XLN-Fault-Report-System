@@ -140,6 +140,15 @@ namespace XLN_Fault_Report_System.Controllers
                     return View();
                 }
             }
+            if (int.Parse(hoursToFirstTwo) - int.Parse(firstTwoNumbers) == 1)
+            {
+                if (int.Parse(hoursToLastTwo) + (60 - int.Parse(lastTwoNumbers)) < 30)
+                {
+                    ViewBag.ContactHours = String.Format("Please make sure to leave at least 30 minuets for our engineers");
+                    return View();
+                }
+
+            }
 
             _contextAccessor.HttpContext.Session.SetString("ContactHoursFrom", contacthoursfrom);
             _contextAccessor.HttpContext.Session.SetString("ContactHoursTo", contacthoursto);

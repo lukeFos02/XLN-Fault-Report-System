@@ -3,31 +3,30 @@
     ViewData["Title"] = "Diagnostics Test";
 }
 
-
 <html>
 <head>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
     <div class="diagnosticsButton">
         <button class="btn btn-info" id="diagnosticsButton" onclick="moveProgressBar()">Run Diagnostics</button>
-    </div>
-    <br />
+    </div>    <br />
 
     <div id="myBar" style="height:24px;width:0%;">
-        <div id="myBarUnderlayer" style="height:24px;width:98%; display:none;"></div>
+    <div id="myBarUnderlayer" style="height:24px;width:98%; display:none;"></div>
     </div>
     <br />
     @using (Html.BeginForm("Diagnostics", "ErrorForm", FormMethod.Post))
     {
         <div style="text-align: center;">
-            <label id="errorLabel" class="diagnosticsHeading"></label>
+        <label id="errorLabel" class="diagnosticsHeading"></label>
         </div>
         <hr />
         <input type="hidden" id="DiagnosticsPageLink" name="diagnostictest">
         <div class="diagnosticsButton">
-            <button type="submit" class="btn btn-primary" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()">Next</button>
+        <button type="submit" class="btn btn-info" style="display:none" id="submitButton" value="Submit" onclick="OnSubmit()">Next</Button>
+        <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm3","ErrorForm")';return false;''">Back</button>
         </div>
     }
 </body>
@@ -78,7 +77,7 @@
         }
 
         document.getElementById("diagnosticsButton").disabled = true;
-        document.getElementById("submitButton").style.display = 'block';
+        document.getElementById("submitButton").style.display = 'inline';
     }
 
 
