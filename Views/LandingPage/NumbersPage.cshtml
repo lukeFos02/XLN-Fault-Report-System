@@ -51,7 +51,7 @@
                             <div>
                                 [@a.Faults[i].FaultId] Date Submitted: @a.Faults[i].Time Status: @a.Faults[i].Status @if (a.Faults[i].Status == "Fault report pending")
                                 {
-                                    @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = a.Faults[i].FaultId})
+                                    @Html.ActionLink("Cancel", "CancelFault", "LandingPage", new {fault = a.Faults[i].FaultId}, new {@class = "cancelLink"})
                                 }
                             </div>
                         }

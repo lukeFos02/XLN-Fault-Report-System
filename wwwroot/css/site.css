@@ -335,6 +335,12 @@ label {
     align-items: center;
 }
 
+.cancelLink {
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
 /*Diagnostics Page*/
 
 #myBar {
@@ -411,6 +417,10 @@ label {
 
 .hoursFromInput {
     margin-left: 30%;
+}
+
+.customerDeatilsLabel{
+    text-align:center;
 }
 
 .alignMobileText {
