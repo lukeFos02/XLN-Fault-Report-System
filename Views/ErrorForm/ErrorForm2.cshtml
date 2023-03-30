@@ -22,23 +22,23 @@
             {
                 <div class="float-child">
                     <strong><label>Phone Incident Type</label><br /></strong>
-                    <label>@Html.CheckBox("bellnotring")&nbsp;Bell not ringing</label>
-                    <label>@Html.CheckBox("contdialtone")&nbsp;Continuois dial tone</label><br />
-                    <label>@Html.CheckBox("crossedlines")&nbsp;Crossed lines</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>@Html.CheckBox("cutsoff")&nbsp;Cuts off</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-                    <label>@Html.CheckBox("nodialtone")&nbsp;No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>@Html.CheckBox("noisy")&nbsp;Noisy line</label><br />
-                    <label>@Html.CheckBox("damage")&nbsp;Damage</label><br />
+                    <label>@Html.CheckBox("bellnotring", new{@class="phoneCheckbox"})&nbsp;Bell not ringing</label>
+                    <label>@Html.CheckBox("contdialtone", new{@class="phoneCheckbox"})&nbsp;Continuois dial tone</label><br />
+                    <label>@Html.CheckBox("crossedlines", new{@class="phoneCheckbox"})&nbsp;Crossed lines</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("cutsoff", new{@class="phoneCheckbox"})&nbsp;Cuts off</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+                    <label>@Html.CheckBox("nodialtone", new{@class="phoneCheckbox"})&nbsp;No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("noisy", new{@class="phoneCheckbox"})&nbsp;Noisy line</label><br />
+                    <label>@Html.CheckBox("damage", new{@class="phoneCheckbox"})&nbsp;Damage</label><br />
                 </div>
 
                 <div class="float-child">
                     <strong><label>BB Incident Type</label><br /></strong>
-                    <label>@Html.CheckBox("intermittent")&nbsp;Intermittent conection</label>
-                    <label>@Html.CheckBox("earlylife")&nbsp;Early life failure</label>
-                    <label>@Html.CheckBox("broadbandfault")&nbsp;Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>@Html.CheckBox("landlinefault")&nbsp;Landline fault</label>
-                    <label>@Html.CheckBox("firmware")&nbsp;Firmware upgraded</label><br />
-                    <label>@Html.CheckBox("webpages")&nbsp;No web pages loading</label><br />
+                    <label>@Html.CheckBox("intermittent", new{@class="bbCheckbox"})&nbsp;Intermittent conection</label>
+                    <label>@Html.CheckBox("earlylife", new{@class="bbCheckbox"})&nbsp;Early life failure</label>
+                    <label>@Html.CheckBox("broadbandfault", new{@class="bbCheckbox"})&nbsp;Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>@Html.CheckBox("landlinefault", new{@class="bbCheckbox"})&nbsp;Landline fault</label>
+                    <label>@Html.CheckBox("firmware", new{@class="bbCheckbox"})&nbsp;Firmware upgraded</label><br />
+                    <label>@Html.CheckBox("webpages", new{@class="bbCheckbox"})&nbsp;No web pages loading</label><br />
                 </div>
             }
             else
@@ -47,25 +47,25 @@
                 {
                     <div class="float-child-alone">
                         <strong><label>Phone Incident Type</label><br /></strong>
-                        <label>@Html.CheckBox("bellnotring")&nbsp;Bell not ringing</label>
-                        <label>@Html.CheckBox("contdialtone")&nbsp;Continuois dial tone</label><br />
-                        <label>@Html.CheckBox("crossedlines")&nbsp;Crossed lines</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>@Html.CheckBox("cutsoff")&nbsp;Cuts off</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-                        <label>@Html.CheckBox("nodialtone")&nbsp;No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>@Html.CheckBox("noisy")&nbsp;Noisy line</label><br />
-                        <label>@Html.CheckBox("damage")&nbsp;Damage</label><br />
+                        <label>@Html.CheckBox("bellnotring", new{@class="phoneCheckbox"})&nbsp;Bell not ringing</label>
+                        <label>@Html.CheckBox("contdialtone", new{@class="phoneCheckbox"})&nbsp;Continuois dial tone</label><br />
+                        <label>@Html.CheckBox("crossedlines", new{@class="phoneCheckbox"})&nbsp;Crossed lines</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>@Html.CheckBox("cutsoff", new{@class="phoneCheckbox"})&nbsp;Cuts off</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+                        <label>@Html.CheckBox("nodialtone", new{@class="phoneCheckbox"})&nbsp;No dial tone</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>@Html.CheckBox("noisy", new{@class="phoneCheckbox"})&nbsp;Noisy line</label><br />
+                        <label>@Html.CheckBox("damage", new{@class="phoneCheckbox"})&nbsp;Damage</label><br />
                     </div>
                 }
                 @if (options.Contains("Broadband") == true)
                 {
                     <div class="float-child-alone">
                         <strong><label>BB Incident Type</label><br /></strong>
-                        <label>@Html.CheckBox("intermittent")&nbsp;Intermittent conection</label>
-                        <label>@Html.CheckBox("earlylife")&nbsp;Early life failure</label>
-                        <label>@Html.CheckBox("broadbandfault")&nbsp;Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>@Html.CheckBox("landlinefault")&nbsp;Landline fault</label>
-                        <label>@Html.CheckBox("firmware")&nbsp;Firmware upgraded</label><br />
-                        <label>@Html.CheckBox("webpages")&nbsp;No web pages loading</label><br />
+                        <label>@Html.CheckBox("intermittent", new{@class="bbCheckbox"})&nbsp;Intermittent conection</label>
+                        <label>@Html.CheckBox("earlylife", new{@class="bbCheckbox"})&nbsp;Early life failure</label>
+                        <label>@Html.CheckBox("broadbandfault", new{@class="bbCheckbox"})&nbsp;Broadband Fault</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>@Html.CheckBox("landlinefault", new{@class="bbCheckbox"})&nbsp;Landline fault</label>
+                        <label>@Html.CheckBox("firmware", new{@class="bbCheckbox"})&nbsp;Firmware upgraded</label><br />
+                        <label>@Html.CheckBox("webpages", new{@class="bbCheckbox"})&nbsp;No web pages loading</label><br />
                     </div>
                 }
             }
@@ -96,10 +96,14 @@
     <div style="display:none;" id="noOptionSelected" role="alert">
         <p style="color:red;">Please select one of the options before proceeding</p>
     </div>
+    <div style="display:none;" id="noFaultSelected" role="alert">
+        <p style="color:red;">Please select at least one fault before proceeding</p>
+    </div>
     <div class="buttons">
-       <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm1","ErrorForm")';return false;''">Back</button>
-       <button type="submit" class="btn btn-info" name="Next">Next</button>
-   </div>
+
+        <button type="submit" name="Cancel" class="btn btn-secondary" value="Back" onclick="location.href='@Url.Action("ErrorForm1","ErrorForm")';return false;''">Back</button>
+        <button type="submit" class="btn btn-info" name="Next">Next</button>
+    </div>
 
 }
 
@@ -111,6 +115,7 @@
             document.getElementById("characterLimit").style.display = 'block';
         }
     }
+
     function noSelected() {
         if (document.getElementById("otherErrorNo").checked) {
             document.getElementById("errorDetailsBox").style.display = 'none';
@@ -142,6 +147,24 @@
         }
         else if (document.getElementById("errordescription").value.length > 250) {
             document.getElementById("limitAlert").style.display = 'block';
+            return false;
+        }
+
+        if (document.getElementById("otherErrorNo").checked == true) {
+            var phoneCheckboxes = document.getElementsByClassName('phoneCheckbox');
+            var bbCheckboxes = document.getElementsByClassName('bbCheckbox');
+            for (var i = 0; i < phoneCheckboxes.length; i++) {
+                if (phoneCheckboxes[i].checked) {
+                    return true;
+                }
+            }
+            for (var i = 0; i < bbCheckboxes.length; i++) {
+                if (bbCheckboxes[i].checked) {
+                    return true;
+                }
+            }
+            document.getElementById("noFaultSelected").style.display = 'block';
+            document.getElementById("noFaultSelected").style.marginLeft = '38%';
             return false;
         }
         else {

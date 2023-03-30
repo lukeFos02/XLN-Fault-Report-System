@@ -12,10 +12,10 @@
 </head>
 <body>
     <h1 class="lineHeadingNumbersPage">Select The Affected Line</h1>
+    <h2 class="yourassets" style="margin-right: 53%;">Your Assets</h2>
     <div class="numbersContainer">
         @foreach (Asset a in assets)
         {
-            <p>
                 <form asp-controller="LandingPage" asp-action="NumbersPage" method="post">
                     <div class="numberBox">
                         <div class="phoneNumber">
@@ -57,7 +57,6 @@
                         }
                     }
                 </div>
-            </p>
         }
     </div>
 </body>
