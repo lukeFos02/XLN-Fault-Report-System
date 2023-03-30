@@ -32,18 +32,21 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #2596be; font-size:20px;" asp-area="" asp-controller="LandingPage" asp-action="Index">Home</a>
+                            <a class="nav-link" style="color: #2596be; font-size:20px;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="color: #2596be; font-size:20px;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
                         @if (username != null)
                         {
-                            <li class="nav-item ms-auto" style="color:#2596be; font-size:20px;">
-                                <text style = "position:absolute; margin-left:39.5%; top:0%;">@username</text>
+                            <li class="nav-item" style="color:#2596be; font-size:20px; margin-top:5%;">
+                                @username |
                             </li>
-                            <li class="nav-item ms-auto" style="color:#2596be; font-size:20px;">
-                                <a class="nav-link" style="color: #2596be; font-size:20px;" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+
+                            <li class="nav-item" style="color:#2596be; font-size:20px;">
+                                <a class="nav-link" style="color: #2596be; font-size:20px;" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                             </li>
                         }
                     </ul>
